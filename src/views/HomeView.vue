@@ -2,6 +2,7 @@
 
 <div>
 
+<h1>Register</h1>
 <form @submit.prevent="register" id="register">
   <div class="mb-3">
     <label  class="form-label">Email address</label>
@@ -24,9 +25,7 @@
     <input type="checkbox" class="form-check-input" id="exampleCheck1">
     <label class="form-check-label" for="exampleCheck1">Keep me updated</label>
   </div>
-  <p>
-    {{user}}
-  </p>
+
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>
 

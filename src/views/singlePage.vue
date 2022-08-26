@@ -1,10 +1,8 @@
 <template>
-  <h2>Products</h2>
-  <div v-if="products">
+  <h1>Single view</h1>
+  <div v-if="product">
     <div class="about">
       <div
-        v-for="(product, index) in products"
-        :key="index"
         class="card"
         style="width: 18rem"
       >
@@ -14,11 +12,9 @@
           <p class="card-text">
             {{ product.product_description }}
           </p>
-                <div class="product-btns">
-                  <router-link class="product-btn" :to="{name: 'single', params: {id: product.product_id}}"
-                    ><span>More Info</span><i></i
-                  ></router-link>
-                </div>
+          <div class="product-btns">
+           <button>Purchase</button> 
+          </div>
         </div>
       </div>
     </div>
@@ -30,16 +26,23 @@
 
 <script>
 export default {
-  computed: {
-    products() {
-      return this.$store.state.products;
-    },
-  },
 
+    computed: {
+      product() {
+        return this.$store.state.product;
+      },
+  
+     user(){
+          return this.$store.state.user
+        }
+  
+    },
   mounted() {
-    this.$store.dispatch("getProducts");
-  },
+    this.$store.dispatch("getProduct", this.$route.params.id);
+  }
+
 };
+
 </script>
 
 <style>

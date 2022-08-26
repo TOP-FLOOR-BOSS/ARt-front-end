@@ -1,14 +1,18 @@
 import { createStore } from 'vuex'
-import { Router } from '/src/router/index'
+import router from '@/router'
 import axios from 'axios';
 
 export default createStore({
   state: {
     user: null,
-    users: null
+    users: null,
+    products: null,
+    product: null
   },
   getters: {
   },
+
+
   mutations: {
     setusers: (state, users) => {
       state.users= users;
@@ -18,50 +22,100 @@ export default createStore({
       state.token = token;
     },
 
+    setproducts: (state, products) => {
+      state.products = products
+    },
+
+    setproduct: (state, product) => {
+      state.product = product
+    }
+
   },
   actions: {
         // adds user to db
         register: async (context, payload) => { 
-          // const {
-          //   user_name,
-          //   user_lastname,
-          //   email,
-          //   user_role,
-          //   user_password,
-          // } = payload;
-
-
-          // await fetch("https://capt.herokuapp.com/register", {
-          //     method: "POST",
-          //     body: JSON.stringify({
-          //       email: email,
-          //       user_role: user_role,
-          //       password: user_password,
-          //     }),
-          //     headers: {
-          //       "Content-type": "application/json; charset=UTF-8",
-          //       // "x-auth-token": context.state.token,
-          //     },
-          //   })
-          //   .then((response) => response)
-          //   .then(res => res.json())
-          //   .then((data) => {
-          //     if (data) {
-          //       alert(data.msg);
-          //       console.log(data);
-          //       // let token = data.token;
-          //       context.commit("setusers", user);
-          //       // context.commit("setToken", token);
-          //     } else {
-          //       alert(data.msg);
-          //       document.getElementById("register").reset();
-          //     }
-          //   });
           console.log(payload);
           let res = await axios.post('https://capt.herokuapp.com/register', payload);
           let data = await res.data;
           console.log(data);
         },
+
+        //Logsin
+        // login: async (context, payload) => { 
+        //   console.log(payload);
+        //   let res = await axios.post('https://capt.herokuapp.com/register', payload);
+        //   let data = await res.data;
+        //   console.log(data);
+        // },
+
+
+
+        // all products
+        getProducts: async (context) => {
+          await fetch("https://capt.herokuapp.com/products")
+            .then((res) => res.json())
+            .then((data) => context.commit("setproducts", data.results));
+        },
+
+        //Single Product
+
+        getProduct: async (context, id) => {
+          await fetch("https://capt.herokuapp.com/products/" + id)
+            .then((res) => res.json())
+            .then((data) => {
+              console.log(data);
+              context.commit("setproduct", data.results[0])});
+        },
+
+
+        login(context, payload){
+          const { email, user_password } = payload
+          fetch('https://capt.herokuapp.com/login', {
+          method: 'PATCH',
+          body: JSON.stringify({
+              email: email,
+              user_password: user_password,
+          }),
+          headers: {
+            'Content-type': 'application/json; charset=UTF-8',
+          },
+          })
+          .then((response) => response.json())
+          .then((data) => {
+            let {msg, token, results} = data;
+            // if (data.msg == 'Email Not Found. Please register') {
+            //   alert(data.msg)
+            // } else {
+            //   if (data.msg == 'Password is Incorrect') {
+            //     alert(data.msg)
+            //   } else {
+            //     alert(`Welcome, ${data.user[0].user_name}`)
+            //     context.commit('setusers',data.user[0])
+            //     context.commit('setToken',data.token)
+            //     // context.dispatch('setusers')
+            //     setTimeout(()=>{
+            //       router.push('/about'), 3000
+            //     })
+            //   }
+            // }
+            if(msg == 'Logged in') {
+              context.commit('setusers',results);
+              context.commit('setToken',token);
+              if(results.user_role === 'user') {
+                setTimeout(()=>{
+                  router.push('/about'), 3000
+                })
+              }else {
+                // setTimeout(()=>{
+                //   router.push('/admin'), 3000
+                // })
+              }
+            }
+    
+          });
+    
+        },
+
   },
   modules: {
   }
