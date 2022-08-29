@@ -1,11 +1,17 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link> |
-    <router-link to="/login">Login</router-link> |
-  </nav>
+  <nav-c/>
   <router-view/>
 </template>
+
+<script>
+  import navC from "@/components/navC.vue";
+  export default{
+    components:{
+      navC
+  }
+  }
+  </script>
+
 
 <style>
 #app {

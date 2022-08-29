@@ -103,7 +103,7 @@ export default createStore({
               context.commit('setToken',token);
               if(results.user_role === 'user') {
                 setTimeout(()=>{
-                  router.push('/about'), 3000
+                  router.push('/products'), 3000
                 })
               }else {
                 // setTimeout(()=>{
