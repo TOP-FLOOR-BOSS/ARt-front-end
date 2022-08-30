@@ -11,7 +11,7 @@
   <nav class="navbar hulu fixed-top">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">Offcanvas navbar</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+    <button class="navbar-toggler bg-light" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
@@ -50,7 +50,7 @@ export default {
 <style>
 
 .hulu {
-  background: linear-gradient(-45deg, #5608cb, #ffffff, #2124ff, #000000);
+  background: linear-gradient(-45deg, #7a0808, #58046b, #670404, #3f0764);
   background-size: 400% 400%;
   animation: gradient 15s ease infinite;
 }

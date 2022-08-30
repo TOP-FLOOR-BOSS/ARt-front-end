@@ -1,12 +1,14 @@
 <template>
     <h1>Single view</h1>
+
     <div v-if="product">
       <div class="about">
         <div
           class="card"
           style="width: 18rem"
         >
-          <img src="{{product.img}}" class="card-img-top" alt="" />
+
+          <img :src="product.img" class="card-img-top" :alt="product.title" />
           <div class="card-body">
             <h5 class="card-title">{{ product.title }}</h5>
             <p class="card-text">
@@ -27,16 +29,16 @@
   <script>
   export default {
   
-      computed: {
-        product() {
-          return this.$store.state.product;
-        },
-    
-       user(){
-            return this.$store.state.user
-          }
-    
+  computed: {
+      product() {
+        return this.$store.state.product;
       },
+  
+      user(){
+          return this.$store.state.user
+        }
+  
+    },
     mounted() {
       this.$store.dispatch("getProduct", this.$route.params.id);
     }

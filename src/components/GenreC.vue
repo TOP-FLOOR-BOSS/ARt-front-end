@@ -1,43 +1,33 @@
 <template>
   
-<div class="untitled">
-	<div class="untitled__slides">
-		<div class="untitled__slide">
-			<div class="untitled__slideBg"></div>
-			<div class="untitled__slideContent">
-				<span>London</span> 
-				<span>Scout</span>
-				<a class="button" href="https://unsplash.com/@scoutthecity" target="/black">Unsplash Profile</a>
-			</div>
-		</div>
-		<div class="untitled__slide">
-			<div class="untitled__slideBg"></div>
-			<div class="untitled__slideContent">
-				
-				<span>Vladimir</span> 
-				<span>Kudinov</span>
-				<a class="button" href="https://unsplash.com/@madbyte" target="/black">Unsplash Profile</a>
-			</div>
-		</div>
-		<div class="untitled__slide">
-			<div class="untitled__slideBg"></div>
-			<div class="untitled__slideContent">
-				<span>Macio</span> 
-				<span>Amorim</span>
-				<a class="button" href="https://unsplash.com/@maicoamorim" target="/black">Unsplash Profile</a>
-			</div>
-		</div>
-		<div class="untitled__slide">
-			<div class="untitled__slideBg"></div>
-			<div class="untitled__slideContent">
-				<span>Mario</span> 
-				<span>Calvo</span>
-				<a class="button" href="https://unsplash.com/@mariocalvo" target="/black">Unsplash Profile</a>
-			</div>
-		</div>
-	</div>
-	<div class="untitled__shutters"></div>
+
+
+<!-- Start of Left Split Screen -->
+<div class="left-container">
+  <div id="l-one" class="card">
+    <p>  Gaming  </p>
+	<button type="submit" class="subBtn btn btn-light">Browse</button>
+  </div>
 </div>
+
+
+<!-- Start of Center Split Screen -->
+<div class="center-container">
+  <div id="c-one" class="card">
+    <p> Anime </p>
+	<button type="submit" class="subBtn btn btn-light">Browse</button>
+  </div>
+</div>
+
+<!-- Start of Right Split Screen -->
+<div class="right-container">
+  <div id="r-one" class="card">
+    <p> Parallel Art</p>
+	<button type="submit" class="subBtn btn btn-light">Browse</button>
+  </div>
+
+</div>
+  
 </template>
 
 <script>
@@ -47,263 +37,226 @@ export default {
 </script>
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Silkscreen&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Teko:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap');
 
-body {
-	 width: 100vw;
-	 height: 100vh;
-	 overflow: hidden;
+* {
+  margin:0;
+  padding:0;
+  box-sizing: border-box;
 }
- .untitled {
-	 position: absolute;
-	 height: 100%;
-	 width: 100%;
-	 animation: rotateHue infinite 20s linear;
-	 animation-delay: 0.625s;
+
+
+.left-container, 
+.right-container,
+.center-container {
+  position:fixed;
+  width:33.33%;
+  height: 100%;
+  /* overflow-y: scroll; */
+	rotate: 3deg;
+  padding-top: 9px;
+
+
 }
- @keyframes rotateHue {
-	 0% {
-		 filter: hue-rotate(0deg);
-	}
-	 20% {
-		 filter: hue-rotate(0deg);
-	}
-	 25% {
-		 filter: hue-rotate(90deg);
-	}
-	 45% {
-		 filter: hue-rotate(90deg);
-	}
-	 50% {
-		 filter: hue-rotate(180deg);
-	}
-	 70% {
-		 filter: hue-rotate(180deg);
-	}
-	 75% {
-		 filter: hue-rotate(270deg);
-	}
-	 95% {
-		 filter: hue-rotate(270deg);
-	}
-	 100% {
-		 filter: hue-rotate(360deg);
-	}
+
+.left-container {
+  left:0;
+
+  
 }
- .untitled__shutters {
-	 position: absolute;
-	 height: 150vmax;
-	 width: 150vmax;
-	 left: calc(50% - 75vmax);
-	 top: calc(50% - 75vmax);
-	 pointer-events: none;
-	 z-index: 2;
-	 animation: rotateFrame 10s linear infinite;
+
+.center-container {
+  left:33.33%;
 }
- @keyframes rotateFrame {
-	 0% {
-		 transform: rotate(0deg);
-	}
-	 100% {
-		 transform: rotate(180deg);
-	}
+
+.right-container {
+  left:66.66%;
 }
- .untitled__shutters:before, .untitled__shutters:after {
-	 /* content: &#39;
-	&#39;
-	; */
-	 position: absolute;
-	 height: 100%;
-	 width: 100%;
-	 left: 50%;
-	 transform: translate3d(-50%, 0, 0);
-	 background-color: #b3401a;
-	 pointer-events: auto;
+
+.card {
+  padding:50px;
+  color:white;
+  /* font-family: helvetica, arial, sans-serif; */
+  font-weight: bold;
+  font-size: 30px;
+  height: 100vh;
+  width:100%;
+  
 }
- .untitled__shutters:before {
-	 bottom: 50%;
-	 animation: openTop 5s infinite;
+/* individual styles for left cards */
+#l-one {
+  background: url(../assets/kratos_god_of_war_4_by_zack_awesome_dc1i0t4.jpg);
+  background-position:bottom;
+  background-size: contain;
+  font-family: 'Silkscreen', cursive;
+  font-size: 39px;
 }
- @keyframes openTop {
-	 0% {
-		 transform: translate3d(-50%, 0, 0);
-		 animation-timing-function: cubic-bezier(0.8, 0, 0.1, 1);
-	}
-	 40% {
-		 transform: translate3d(-50%, -65vmax, 0);
-		 animation-timing-functon: cubic-bezier(0.6, 0.04, 0.98, 0.335);
-	}
-	 70% {
-		 transform: translate3d(-50%, -65vmax, 0);
-		 animation-timing-functon: cubic-bezier(0.6, 0.04, 0.98, 0.335);
-	}
-	 100% {
-		 transform: translate3d(-50%, 0, 0);
-		 animation-timing-function: cubic-bezier(0.6, 0.04, 0.98, 0.335);
-	}
+
+
+
+#l-two {
+  background-color: #7f7f7f;
 }
- .untitled__shutters:after {
-	 top: 50%;
-	 animation: openBottom 5s infinite;
+
+#l-three {
+  background-color: #b2b2b2;
 }
- @keyframes openBottom {
-	 0% {
-		 transform: translate3d(-50%, 0, 0);
-		 animation-timing-function: cubic-bezier(0.8, 0, 0.1, 1);
-	}
-	 40% {
-		 transform: translate3d(-50%, 65vmax, 0);
-		 animation-timing-functon: cubic-bezier(0.6, 0.04, 0.98, 0.335);
-	}
-	 70% {
-		 transform: translate3d(-50%, 65vmax, 0);
-		 animation-timing-functon: cubic-bezier(0.6, 0.04, 0.98, 0.335);
-	}
-	 100% {
-		 transform: translate3d(-50%, 0, 0);
-		 animation-timing-function: cubic-bezier(0.6, 0.04, 0.98, 0.335);
-	}
+
+#l-four {
+  background-color: #cecece;
+  
 }
- .untitled__slides {
-	 position: absolute;
-	 height: 100%;
-	 width: 100%;
-	 top: 0;
-	 left: 0;
-	 background-color: #b3401a;
+
+/* individual styles for centered cards */
+#c-one {
+	background: url(../assets/73990.jpg);
+  background-position:bottom;
+  background-size: contain;
+  font-family: 'Teko', sans-serif;
+  font-size: 39px;
 }
- .untitled__slide {
-	 position: absolute;
-	 height: 100%;
-	 width: 100%;
-	 opacity: 0;
-	 animation: showHideSlide infinite 20s steps(1);
+
+#c-two {
+  background-color: #b2b2b2;
+  
 }
- @keyframes showHideSlide {
-	 0% {
-		 opacity: 1;
-		 pointer-events: auto;
-		 z-index: 1;
-	}
-	 25% {
-		 opacity: 0;
-		 pointer-events: none;
-		 z-index: -1;
-	}
-	 100% {
-		 opacity: 0;
-		 pointer-events: none;
-		 z-index: -1;
-	}
+
+#c-three {
+  background-color: #cecece;
 }
- .untitled__slide:nth-child(1) {
-	 animation-delay: 0s;
+
+#c-four {
+  background-color: #b2b2b2;
 }
- .untitled__slide:nth-child(1) .untitled__slideBg {
-	 background-image: url(https://unsplash.it/g/1500/2200?image=838);
+
+/* individual styles for right cards */
+#r-one {
+background: url(../assets/bILLIE.jpg);
+  background-position:bottom;
+  background-size: contain;
+  font-family: 'Rock Salt', cursive;
+  font-size: 34px;
 }
- .untitled__slide:nth-child(2) {
-	 animation-delay: 5s;
+
+#r-two {
+  background-color: #b2b2b2;
 }
- .untitled__slide:nth-child(2) .untitled__slideBg {
-	 background-image: url(https://unsplash.it/g/1500/1000?image=1078);
+
+#r-three {
+  background-color: #7f7f7f;
 }
- .untitled__slide:nth-child(3) {
-	 animation-delay: 10s;
+
+#r-four {
+  background-color: #3a3a3a;
 }
- .untitled__slide:nth-child(3) .untitled__slideBg {
-	 background-image: url(https://unsplash.it/g/1500/1000?image=1077);
+
+
+.subBtn {
+  position: relative;
+  display: inline-block;
+  /* padding: 10px 20px; */
+  color: #03e9f4;
+  font-size: 26px;
+  text-decoration: none;
+  text-transform: uppercase;
+  width: 60%;
+  overflow: hidden;
+  transition: .5s;
+  margin-top: 520px;
+  letter-spacing: 4px;
+  opacity: 80%;
 }
- .untitled__slide:nth-child(4) {
-	 animation-delay: 15s;
+
+.subBtn:hover {
+  background: #230b27;
+  color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 0 5px #43f403,
+              0 0 25px #ffffff,
+              0 0 50px #f403d4,
+              0 0 100px #03f40f;
 }
- .untitled__slide:nth-child(4) .untitled__slideBg {
-	 background-image: url(https://unsplash.it/g/1500/1200?image=345);
+
+.subBtn span {
+  position: absolute;
+  display: block;
 }
- .untitled__slideBg {
-	 position: relative;
-	 height: 100%;
-	 width: 100%;
-	 top: 0;
-	 left: 0;
-	 background-size: cover;
-	 background-position: center;
-	 background-color: #b3401a;
-	 background-blend-mode: hard-light;
-	 opacity: 1;
-	 z-index: -1;
-	 animation: bgInOut 5s infinite;
+
+.subBtn span:nth-child(1) {
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #03e9f4);
+  animation: btn-anim1 1s linear infinite;
 }
- @keyframes bgInOut {
-	 0% {
-		 transform: rotate(-45deg) scale(1.1);
-		 animation-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
-	}
-	 33% {
-		 transform: rotate(0deg);
-	}
-	 50% {
-		 transform: rotate(0deg);
-	}
-	 66% {
-		 transform: rotate(0deg);
-		 animation-timing-function: cubic-bezier(0.895, 0.03, 0.685, 0.22);
-	}
-	 100% {
-		 transform: rotate(45deg) scale(0.9);
-	}
+
+@keyframes btn-anim1 {
+  0% {
+    left: -100%;
+  }
+  50%,100% {
+    left: 100%;
+  }
 }
- .untitled__slideContent {
-	 position: absolute;
-	 top: 50%;
-	 left: 50%;
-	 transform: translate3d(-50%, -50%, 0);
-	 color: white;
-	 /* font-family: &#39;
-	Abril Fatface&#39;
-	, sans-serif; */
-	 line-height: 0.8;
-	 letter-spacing: -0.025em;
-	 z-index: 2;
-	 opacity: 1;
-	 text-shadow: 0 0 0.5em rgba(179, 64, 26, 0.25);
-	 mix-blend-mode: lighten;
+
+.subBtn span:nth-child(2) {
+  top: -100%;
+  right: 0;
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(180deg, transparent, #03e9f4);
+  animation: btn-anim2 1s linear infinite;
+  animation-delay: .25s
 }
- .untitled__slideContent span {
-	 display: block;
-	 font-size: 15vmin;
+
+@keyframes btn-anim2 {
+  0% {
+    top: -100%;
+  }
+  50%,100% {
+    top: 100%;
+  }
 }
- .button {
-	 /* font-family: &#39;
-	Roboto Mono&#39;
-	, sans-serif; */
-	 text-decoration: none;
-	 font-weight: 800;
-	 text-transform: uppercase;
-	 font-size: 2vmin;
-	 display: inline-block;
-	 position: relative;
-	 border: 3px solid white;
-	 box-shadow: -0.5vmin 0.5vmin 0 rgba(255, 255, 255, 0.5);
-	 background: transparent;
-	 margin-top: 5vmin;
-	 mix-blend-mode: lighten;
-	 color: white;
-	 padding: 2vmin 2vmin 1.8vmin 2vmin;
-	 letter-spacing: 0.1em;
-	 text-shadow: none;
-	 line-height: 1;
-	 transform: translate3d(0.5vmin, -0.5vmin, 0);
-	 transition: all 100ms linear;
+
+.subBtn span:nth-child(3) {
+  bottom: 0;
+  right: -100%;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(270deg, transparent, #03e9f4);
+  animation: btn-anim3 1s linear infinite;
+  animation-delay: .5s
 }
- .button:hover {
-	 transform: translate3d(1vmin, -1vmin, 0);
-	 box-shadow: -1vmin 1vmin 0 rgba(255, 255, 255, 0.5);
-	 background: white;
-	 color: black;
+
+@keyframes btn-anim3 {
+  0% {
+    right: -100%;
+  }
+  50%,100% {
+    right: 100%;
+  }
 }
- .button:active {
-	 transform: translate3d(0px, 0px, 0);
-	 box-shadow: 0px 0px 0 rgba(255, 255, 255, 0.5);
+
+.subBtn span:nth-child(4) {
+  bottom: -100%;
+  left: 0;
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(360deg, transparent, #03e9f4);
+  animation: btn-anim4 1s linear infinite;
+  animation-delay: .75s
+}
+
+@keyframes btn-anim4 {
+  0% {
+    bottom: -100%;
+  }
+  50%,100% {
+    bottom: 100%;
+  }
 }
 
 </style>

@@ -1,4 +1,5 @@
 <template>
+
     <h2>Products</h2>
     <div v-if="products">
       <div class="about">
@@ -8,16 +9,16 @@
           class="card"
           style="width: 18rem"
         >
-          <img src="{{product.img}}" class="card-img-top" alt="" />
+          <img :src="product.img" class="card-img-top" :alt="product.title" />
           <div class="card-body">
             <h5 class="card-title">{{ product.title }}</h5>
             <p class="card-text">
               {{ product.product_description }}
             </p>
                   <div class="product-btns">
-                    <router-link class="product-btn" :to="{name: 'single', params: {id: product.product_id}}"
-                      ><span>More Info</span><i></i
-                    ></router-link>
+                    <router-link class="product-btn" :to="{name: 'product', params: {id: product.product_id}}"
+                      >More Info
+                    </router-link>
                   </div>
           </div>
         </div>

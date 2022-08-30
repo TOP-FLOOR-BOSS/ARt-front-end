@@ -54,7 +54,8 @@ export default createStore({
         getProducts: async (context) => {
           await fetch("https://capt.herokuapp.com/products")
             .then((res) => res.json())
-            .then((data) => context.commit("setproducts", data.results));
+            .then((data) => {
+              context.commit("setproducts", data.results)});
         },
 
         //Single Product
@@ -63,7 +64,7 @@ export default createStore({
           await fetch("https://capt.herokuapp.com/products/" + id)
             .then((res) => res.json())
             .then((data) => {
-              console.log(data);
+              console.log(data.results[0]);
               context.commit("setproduct", data.results[0])});
         },
 
@@ -103,7 +104,7 @@ export default createStore({
               context.commit('setToken',token);
               if(results.user_role === 'user') {
                 setTimeout(()=>{
-                  router.push('/products'), 3000
+                  router.push('/genre'), 3000
                 })
               }else {
                 // setTimeout(()=>{

@@ -1,7 +1,5 @@
 <template>
-
-    <div class="login-box">
-
+  <div class="login-box">
     <h2 class="text-light">Login</h2>
     <form @submit.prevent="login" id="login">
       <div class="mb-3 user-box">
@@ -26,49 +24,48 @@
           id="exampleInputPassword1"
         />
       </div>
-  
-      <button type="submit" class="subBtn btn btn-light" @click="login()">Submit</button>
-      <p class="form-text">DOnt Have an account, <a href="">Sign up</a></p>
+
+      <button type="submit" class="subBtn btn btn-light" @click="login()">
+        Submit
+      </button>
+      <p class="form-text">
+        DOnt Have an account, <router-link to="/register">Sign up</router-link>
+      </p>
     </form>
+  </div>
 
-    </div>
-
-  </template>
+</template>
   
   <script>
-  
-  export default {
-      data(){
-        return{
-            email: '',
-            user_password: '',
-        }
-      },
-      methods:{
-        login(){
-          const user = {
-              email: this.email,
-              user_password: this.user_password
-          }
-        this.$store.dispatch('login', user) 
-        }
-      }
-  };
-  </script>
+export default {
+  data() {
+    return {
+      email: "",
+      user_password: "",
+    };
+  },
+  methods: {
+    login() {
+      const user = {
+        email: this.email,
+        user_password: this.user_password,
+      };
+      this.$store.dispatch("login", user);
+    },
+  },
+};
+</script>
   
   <style>
-
-
 body {
-  margin:0;
-  padding:0;
+  margin: 0;
+  padding: 0;
   font-family: sans-serif;
-  background: url(../assets/mysterious_mist_by_miloecute_df9f5cz-pre.png)    no-repeat center center fixed;
+  background: url(../assets/High_resolution_wallpaper_background_ID_77701497328.jpg)
+    no-repeat center center fixed;
   background-size: cover;
   -webkit-background-size: cover;
-
 }
-
 
 .login-box {
   position: absolute;
@@ -77,9 +74,9 @@ body {
   width: 400px;
   padding: 40px;
   transform: translate(-50%, -50%);
-  background: rgba(0,0,0,.5);
+  background: rgba(218, 201, 201, 0.548);
   box-sizing: border-box;
-  box-shadow: 0 15px 25px rgba(0,0,0,.6);
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.6);
   border-radius: 10px;
 }
 
@@ -107,13 +104,13 @@ body {
 }
 .login-box .user-box label {
   position: relative;
-  top:0;
+  top: 0;
   left: 0;
   padding: 10px 0;
   font-size: 16px;
   color: #fff;
   pointer-events: none;
-  transition: .5s;
+  transition: 0.5s;
 }
 
 .login-box .user-box input:focus ~ label,
@@ -133,19 +130,17 @@ body {
   text-decoration: none;
   text-transform: uppercase;
   overflow: hidden;
-  transition: .5s;
+  transition: 0.5s;
   margin-top: 40px;
-  letter-spacing: 4px
+  letter-spacing: 4px;
 }
 
 .subBtn:hover {
   background: #7704c9;
   color: #fff;
   border-radius: 5px;
-  box-shadow: 0 0 5px #03e9f4,
-              0 0 25px #f4031b,
-              0 0 50px #03e9f4,
-              0 0 100px #f4e003;
+  box-shadow: 0 0 5px #03e9f4, 0 0 25px #f4031b, 0 0 50px #03e9f4,
+    0 0 100px #f4e003;
 }
 
 .subBtn span {
@@ -166,7 +161,8 @@ body {
   0% {
     left: -100%;
   }
-  50%,100% {
+  50%,
+  100% {
     left: 100%;
   }
 }
@@ -178,14 +174,15 @@ body {
   height: 100%;
   background: linear-gradient(180deg, transparent, #03e9f4);
   animation: btn-anim2 1s linear infinite;
-  animation-delay: .25s
+  animation-delay: 0.25s;
 }
 
 @keyframes btn-anim2 {
   0% {
     top: -100%;
   }
-  50%,100% {
+  50%,
+  100% {
     top: 100%;
   }
 }
@@ -197,14 +194,15 @@ body {
   height: 2px;
   background: linear-gradient(270deg, transparent, #03e9f4);
   animation: btn-anim3 1s linear infinite;
-  animation-delay: .5s
+  animation-delay: 0.5s;
 }
 
 @keyframes btn-anim3 {
   0% {
     right: -100%;
   }
-  50%,100% {
+  50%,
+  100% {
     right: 100%;
   }
 }
@@ -216,16 +214,16 @@ body {
   height: 100%;
   background: linear-gradient(360deg, transparent, #03e9f4);
   animation: btn-anim4 1s linear infinite;
-  animation-delay: .75s
+  animation-delay: 0.75s;
 }
 
 @keyframes btn-anim4 {
   0% {
     bottom: -100%;
   }
-  50%,100% {
+  50%,
+  100% {
     bottom: 100%;
   }
 }
-
-  </style>
+</style>
