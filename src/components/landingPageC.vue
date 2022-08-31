@@ -49,11 +49,11 @@
   </div>
 </template>
 
-  <script>
+  <script >
 export default {};
 </script>
   
-  <style >
+  <style scoped>
 /* .deepshadow {
   color: #edb200;
   background-color: rgba(66, 68, 75, 0.622);
@@ -83,6 +83,7 @@ export default {};
   transition: .5s;
   letter-spacing: 4px;
   top: 30%;
+  font-family: "Modak", cursive;
   /* opacity: 80%; */
 }
 

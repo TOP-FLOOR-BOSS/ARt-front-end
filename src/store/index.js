@@ -4,10 +4,11 @@ import axios from 'axios';
 
 export default createStore({
   state: {
-    user: null,
-    users: null,
+    user: null ,
+    users: null || JSON.parse(localStorage.getItem("user")),
     products: null,
-    product: null
+    product: null,
+    cart : null
   },
   getters: {
   },
@@ -16,6 +17,11 @@ export default createStore({
   mutations: {
     setusers: (state, users) => {
       state.users= users;
+      localStorage.setItem("user", JSON.stringify(users))
+    },
+
+    setCart: (state, cart) => {
+      state.cart = cart;
     },
 
     setToken: (state, token) => {
@@ -57,7 +63,7 @@ export default createStore({
             .then((data) => {
               context.commit("setproducts", data.results)});
         },
-
+        
         //Single Product
 
         getProduct: async (context, id) => {
@@ -117,7 +123,56 @@ export default createStore({
     
         },
 
+        getCart: (context, id) => {
+          if (context.state.users.user_id === null) {
+            alert("Please Login");
+          } else {
+            id = context.state.users.user_id;
+            fetch(`https://capt.herokuapp.com/users/${id}/cart`, {
+              method: "GET",
+              headers: {
+                "Content-type": "application/json; charset=UTF-8",
+                "x-auth-token": context.state.token,
+              },
+            }) 
+              .then((res) => res.json())
+              .then((data) => {
+                console.log(data);
+                if (data.results != null) {
+                  context.commit("setCart", (data));
+                }
+              });
+          }
+        },
+
+        addToCart : async (context, product, id) => {
+          console.log(product);
+          if (context.state.users === null) {
+            alert("Please Login");
+          } else {
+            id = context.state.users.user_id;
+            fetch(`http://localhost:3000/users/${id}/cart`, {
+            // fetch(`https://capt.herokuapp.com/users/${id}/cart`, {
+              method: "POST",
+              body : JSON.stringify(product),
+              headers: {
+                "Content-type": "application/json; charset=UTF-8",
+                // "x-auth-token": context.state.token,
+              },
+            })
+              .then((res) => res.json())
+              .then((data) => {
+                console.log(data);
+                // if (data != null) {
+                  context.dispatch("getCart", (id));
+                // }
+              });
+          }
+        }
+
   },
+
+
   modules: {
   }
 })

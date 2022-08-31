@@ -3,28 +3,38 @@
 
 
 <!-- Start of Left Split Screen -->
+
 <div class="left-container">
+<router-link to="/products">
+
   <div id="l-one" class="card">
     <p>  Gaming  </p>
-	<button type="submit" class="subBtn btn btn-light">Browse</button>
   </div>
+
+</router-link>
 </div>
 
 
 <!-- Start of Center Split Screen -->
 <div class="center-container">
-  <div id="c-one" class="card">
+  <router-link to="/products">
+
+    <div id="c-one" class="card">
     <p> Anime </p>
-	<button type="submit" class="subBtn btn btn-light">Browse</button>
   </div>
+
+  </router-link>
+
 </div>
 
 <!-- Start of Right Split Screen -->
 <div class="right-container">
-  <div id="r-one" class="card">
+  <router-link to="/products">
+    <div id="r-one" class="card">
     <p> Parallel Art</p>
-	<button type="submit" class="subBtn btn btn-light">Browse</button>
   </div>
+  </router-link>
+
 
 </div>
   
@@ -36,7 +46,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Silkscreen&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Teko:wght@500&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap');
