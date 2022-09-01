@@ -8,7 +8,7 @@
               class="card mx-auto"
               style="width: 32rem"
             v-for="c in cart" :key="c.product_id">
-                <h1 class="title">{{ cart.title }}</h1>
+                <h1 class="title">{{ c.title }}</h1>
               <img :src="c.img" class="card-img-top" :alt="c.title" />
               <div class="card-body" id="floaty" >
                 <p class="card-text">

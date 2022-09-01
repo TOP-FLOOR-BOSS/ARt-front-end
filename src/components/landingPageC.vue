@@ -13,7 +13,7 @@
       </div>
     </section>
 
-    <section>
+    <section >
       <div class="block">
         <p>
           <span class="first-character sc">I</span> What is Injured Generation?
@@ -76,14 +76,15 @@ export default {};
   float: right;
   /* padding: 10px 20px; */
   color: #6f03f4;
-  font-size: 26px;
+  font-size: 36px;
   text-decoration: bold;
   text-transform: uppercase;
-  width: 30%;
+  width: 97%;
   transition: .5s;
   letter-spacing: 4px;
-  top: 30%;
+  top: 97%;
   font-family: "Modak", cursive;
+  border-bottom: 5px solid black;
   /* opacity: 80%; */
 }
 
@@ -203,8 +204,8 @@ export default {};
 }
 #mainframe p {
   font-family: "Source Sans Pro", sans-serif;
-  font-weight: 400;
-  font-size: 14px;
+  font-weight: 600;
+  font-size: 19px;
   line-height: 24px;
 }
 .first-character {
@@ -278,37 +279,6 @@ export default {};
   background-size: cover;
   background-repeat: no-repeat;
   background-position: bottom;
-}
-
-#mainframe .parallax-one {
-}
-#mainframe .parallax-two {
-  padding-top: 200px;
-  padding-bottom: 200px;
-  overflow: hidden;
-  position: relative;
-  width: 100%;
-  background-image: url(https://images.unsplash.com/photo-1432163230927-a32e4fd5a326?dpr=1&auto=format&fit=crop&w=1500&h=1000&q=80&cs=tinysrgb&crop=);
-  background-attachment: fixed;
-  background-size: cover;
-  -moz-background-size: cover;
-  -webkit-background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center center;
-}
-#mainframe .parallax-three {
-  padding-top: 200px;
-  padding-bottom: 200px;
-  overflow: hidden;
-  position: relative;
-  width: 100%;
-  background-image: url(https://images.unsplash.com/photo-1440688807730-73e4e2169fb8?dpr=1&auto=format&fit=crop&w=1500&h=1001&q=80&cs=tinysrgb&crop=);
-  background-attachment: fixed;
-  background-size: cover;
-  -moz-background-size: cover;
-  -webkit-background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center center;
 }
 
 /* Extras */

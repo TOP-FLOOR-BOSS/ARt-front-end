@@ -89,7 +89,10 @@ export default createStore({
           })
           .then((response) => response.json())
           .then((data) => {
+            console.log(data);  
             let {msg, token, results} = data;
+              context.commit('setusers',data.results);
+
             // if (data.msg == 'Email Not Found. Please register') {
             //   alert(data.msg)
             // } else {
@@ -105,19 +108,19 @@ export default createStore({
             //     })
             //   }
             // }
-            if(msg == 'Logged in') {
-              context.commit('setusers',results);
-              context.commit('setToken',token);
-              if(results.user_role === 'user') {
-                setTimeout(()=>{
-                  router.push('/genre'), 3000
-                })
-              }else {
-                // setTimeout(()=>{
-                //   router.push('/admin'), 3000
-                // })
-              }
-            }
+            // if(msg == 'Logged in') {
+            //   context.commit('setusers',results);
+            //   context.commit('setToken',token);
+            //   if(results.user_role === 'user') {
+            //     setTimeout(()=>{
+            //       router.push('/genre'), 3000
+            //     })
+            //   }else {
+            //     // setTimeout(()=>{
+            //     //   router.push('/admin'), 3000
+            //     // })
+            //   }
+            // }
     
           });
     
@@ -139,7 +142,7 @@ export default createStore({
               .then((data) => {
                 console.log(data);
                 if (data.results != null) {
-                  context.commit("setCart", (data));
+                  context.commit("setCart", (data.results));
                 }
               });
           }

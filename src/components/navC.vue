@@ -33,17 +33,17 @@
               </a>
             </router-link>
             </li>
-          <li class="nav-item">
-            <a class="nav-link " aria-current="page" ><router-link to="/products">Products</router-link></a>
+            <li class="nav-item">
+            <a class="nav-link " aria-current="page" ><router-link to="/genre">About</router-link></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link " aria-current="page" ><router-link to="/genre">About</router-link></a>
+            <a class="nav-link " aria-current="page" ><router-link to="/products">Products</router-link></a>
           </li>
           <li class="nav-item">
             <a class="nav-link " aria-current="page"><router-link to="/register">Register</router-link></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link " aria-current="page"><router-link to="/cart">Cart</router-link></a>
+            <a class="nav-link " aria-current="page"><router-link  to="/cart">Cart</router-link></a>
           </li>
         </ul>
       </div>
@@ -63,7 +63,7 @@ export default {
 <style scoped>
 
 .hulu {
-  background: linear-gradient(-45deg, #7a0808, #58046b, #670404, #3f0764);
+  background: linear-gradient(-45deg, #3b0000, #00364f, #4b1dae, #53035e);
   background-size: 400% 400%;
   animation: gradient 15s ease infinite;
 }

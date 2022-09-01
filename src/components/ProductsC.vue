@@ -1,6 +1,6 @@
 <template>
   <div class="products mx-auto">
-    <h2>All Products</h2>
+    <h1>All Products</h1>
     <div v-if="products">
       <div class="gallery">
         <div
@@ -14,7 +14,7 @@
           >
             <img
               :src="product.img"
-              class="gallery-image"
+              class="gallery-image img-fluid"
               :alt="product.title"
             />
           </router-link>
@@ -47,16 +47,13 @@ export default {
   <style scoped>
 @import url("https://fonts.googleapis.com/css?family=Modak");
 
-:root {
-  /* Base font size */
-  font-size: 10px;
+*{
+  background-image: url(../assets/giphy.gif);
+  background-attachment: fixed;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
 
 .products {
   margin-top: 80px;
@@ -65,10 +62,11 @@ export default {
   padding: 0 2rem 2rem;
 }
 
-.products h2 {
+.products h1 {
   font-family: "Modak", cursive;
   text-decoration: underline;
-  font-size: 34px;
+  font-size: 54px;
+  color:khaki;
 }
 
 .gallery {
@@ -81,20 +79,28 @@ export default {
   flex: 1 0 24rem;
   /* Margin value should be half of grid-gap value as margins on flex items don't collapse */
   margin: 19px;
-  box-shadow: 0.3rem 0.4rem 0.4rem rgba(0, 0, 0, 0.4);
+  box-shadow: 12px 8px 9px rgba(204, 100, 208, 0.4);
+  color: aliceblue;
   overflow: hidden;
+  
 }
 
 .gallery-image {
   display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+  width: 90%;
+  height: 90%;
+  object-fit:fill;
   transition: transform 400ms ease-out;
 }
 
 .gallery-image:hover {
   transform: scale(1.15);
+}
+
+.middle {
+  font-size: 23px;
+  font-style: italic;
+  font-weight: 700;
 }
 
 /*

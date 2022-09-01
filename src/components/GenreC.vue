@@ -8,7 +8,7 @@
 <router-link to="/products">
 
   <div id="l-one" class="card">
-    <p>  Gaming  </p>
+    <p >  Gaming  </p>
   </div>
 
 </router-link>
@@ -65,8 +65,8 @@ export default {
   width:33.33%;
   height: 100%;
   /* overflow-y: scroll; */
-	rotate: 3deg;
-  padding-top: 9px;
+	/* rotate: 3deg; */
+  /* padding-top: 9px; */
 
 
 }
@@ -98,10 +98,10 @@ export default {
 /* individual styles for left cards */
 #l-one {
   background: url(../assets/kratos_god_of_war_4_by_zack_awesome_dc1i0t4.jpg);
-  background-position:bottom;
   background-size: contain;
   font-family: 'Silkscreen', cursive;
   font-size: 39px;
+  
 }
 
 
@@ -174,7 +174,7 @@ background: url(../assets/bILLIE.jpg);
   width: 60%;
   overflow: hidden;
   transition: .5s;
-  margin-top: 520px;
+  /* margin-top: 520px; */
   letter-spacing: 4px;
   opacity: 80%;
 }
