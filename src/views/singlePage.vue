@@ -15,7 +15,7 @@
       </div>
       <div class="product-price-btn">
         <p><span>R</span>{{product.price}}</p>
-        <button type="button"  @click="this.$store.dispatch('addToCart',product )" >buy now</button>
+        <button id="mutton" type="button"  @click="this.$store.dispatch('addToCart',product )" >buy now</button>
       </div>
     </div>
   </div>
@@ -55,18 +55,19 @@ export default {
 
 <style scoped>
 
-.wall{
-  background-image: url(../assets/sebastian-luca-daily21-2.jpg);
-  overflow: hidden;
+*{
+  background-image: url(../assets/dmitry-sarkisov-vk2.gif);
+  background-attachment: fixed;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
-
 .wrapper {
   display: flex;
   /* margin-top: 90px; */
   height: 580px;
-  width: 854px;
+  width: 90%;
   margin: 50px auto;
-  padding: 40px;
+  padding: 0px;
   /* background-color: #474747; */
   border-radius: 7px 7px 7px 7px;
   /* VIA CSS MATIC https://goo.gl/cIbnS */
@@ -78,17 +79,17 @@ export default {
 
 
 .product-img img {
-  border-radius: 7px 0 0 7px;
-  width: 827px;  
-  height: 520px;
+  border-radius: 7px ;
+  height: 600px;
+  width: 500px;
 }
 
 .product-info {
-  float: left;
-  height: 420px;
-  width: 357px;
+  height: 320px;
+  width: 657px;
+  position: absolute;
+  right: 4px;
   border-radius: 0 7px 10px 7px;
-  background-color: #ffffff;
 }
 
 .product-text {
@@ -99,7 +100,7 @@ export default {
 .product-text h1 {
   margin: 0 0 0 38px;
   padding-top: 52px;
-  font-size: 34px;
+  font-size: 64px;
   color: #474747;
 }
 
@@ -122,9 +123,9 @@ export default {
   height: 125px;
   margin: 0 0 0 38px;
   font-family: "Playfair Display", serif;
-  color: #00fff7;
+  color: #000000;
   line-height: 1.7em;
-  font-size: 25px;
+  font-size: 22px;
   font-weight: lighter;
   overflow: hidden;
 }
@@ -132,8 +133,8 @@ export default {
 .product-price-btn {
   height: 103px;
   width: 327px;
-  margin-top: 17px;
-  position: relative;
+  margin-top: 47px;
+  position:relative;
 }
 
 .product-price-btn p {
@@ -141,20 +142,47 @@ export default {
   top: -12px;
   height: 50px;
   font-family: "Trocchi", serif;
-  margin: 0 0 0 38px;
-  font-size: 28px;
+  font-size: 38px;
   font-weight: lighter;
   color: #474747;
 }
 
 span {
   display: inline-block;
-  height: 50px;
   font-family: "Suranna", serif;
   font-size: 34px;
 }
 
-.product-price-btn button {
+#mutton {
+  display: flex;
+  float: right;
+  /* padding: 10px 20px; */
+  color: #6f03f4;
+  font-size: 26px;
+  text-decoration: bold;
+  text-transform: uppercase;
+  /* width: 97%; */
+  transition: .5s;
+  letter-spacing: 4px;
+  font-family: "Modak", cursive;
+  border-bottom: 5px solid black;
+  /* opacity: 80%; */
+}
+
+#mutton:hover {
+  background: #230b27;
+  color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 0 5px #f45f03,
+              0 0 25px #ffbf00,
+              0 0 50px #f40303,
+              0 0 100px #f4ec03;
+}
+
+
+
+
+/* .product-price-btn button {
   display: inline-block;
   height: 50px;
   width: 176px;
@@ -175,5 +203,5 @@ span {
 
 .product-price-btn button:hover {
   background-color: #79b0a1;
-}
+} */
 </style>

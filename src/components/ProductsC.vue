@@ -25,7 +25,9 @@
       </div>
     </div>
     <div v-else>
-      <p>Loading.....</p>
+      <div class="spinner-border text-light" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
     </div>
   </div>
 </template>
@@ -47,13 +49,12 @@ export default {
   <style scoped>
 @import url("https://fonts.googleapis.com/css?family=Modak");
 
-*{
+* {
   background-image: url(../assets/giphy.gif);
   background-attachment: fixed;
   background-size: cover;
   background-repeat: no-repeat;
 }
-
 
 .products {
   margin-top: 80px;
@@ -66,7 +67,7 @@ export default {
   font-family: "Modak", cursive;
   text-decoration: underline;
   font-size: 54px;
-  color:khaki;
+  color: khaki;
 }
 
 .gallery {
@@ -79,17 +80,17 @@ export default {
   flex: 1 0 24rem;
   /* Margin value should be half of grid-gap value as margins on flex items don't collapse */
   margin: 19px;
-  box-shadow: 12px 8px 9px rgba(204, 100, 208, 0.4);
+  box-shadow: 12px 8px 9px rgba(0, 0, 0, 0.4);
   color: aliceblue;
   overflow: hidden;
-  
 }
 
 .gallery-image {
   display: block;
   width: 90%;
   height: 90%;
-  object-fit:fill;
+  object-fit: fill;
+  border-radius: 20px;
   transition: transform 400ms ease-out;
 }
 

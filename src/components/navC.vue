@@ -45,6 +45,9 @@
           <li class="nav-item">
             <a class="nav-link " aria-current="page"><router-link  to="/cart">Cart</router-link></a>
           </li>
+          <li>
+            <button @click="logout">Logout</button>
+          </li>
         </ul>
       </div>
     </div>
@@ -55,6 +58,12 @@
 
 <script>
 export default {
+
+  methods: {
+    logout() {
+      this.$store.dispatch("logout");
+    },
+  },
 
 }
 </script>

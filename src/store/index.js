@@ -108,22 +108,33 @@ export default createStore({
             //     })
             //   }
             // }
-            // if(msg == 'Logged in') {
-            //   context.commit('setusers',results);
-            //   context.commit('setToken',token);
-            //   if(results.user_role === 'user') {
-            //     setTimeout(()=>{
-            //       router.push('/genre'), 3000
-            //     })
-            //   }else {
-            //     // setTimeout(()=>{
-            //     //   router.push('/admin'), 3000
-            //     // })
-            //   }
-            // }
+            if(msg == 'Logged in') {
+              context.commit('setusers',results);
+              context.commit('setToken',token);
+              if(results.user_role === 'user') {
+                setTimeout(()=>{
+                  router.push('/genre'), 3000
+                })
+              }else {
+                // setTimeout(()=>{
+                //   router.push('/admin'), 3000
+                // })
+              }
+            }
     
           });
     
+        },
+
+        logout: (context) => {
+          localStorage.removeItem('user');
+          // window.location.reload()
+          console.log(context.state.user)
+          setTimeout(()=>{
+            router.push('/'), 3000
+          })
+          // if(results.user_role === 'user') {
+          // }
         },
 
         getCart: (context, id) => {
