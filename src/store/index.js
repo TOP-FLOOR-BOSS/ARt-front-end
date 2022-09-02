@@ -22,6 +22,7 @@ export default createStore({
 
     setCart: (state, cart) => {
       state.cart = cart;
+      console.log(cart);
     },
 
     setToken: (state, token) => {
@@ -151,7 +152,7 @@ export default createStore({
             }) 
               .then((res) => res.json())
               .then((data) => {
-                console.log(data);
+                // console.log(data);
                 if (data.results != null) {
                   context.commit("setCart", (data.results));
                 }
@@ -182,8 +183,27 @@ export default createStore({
                 // }
               });
           }
-        }
+        },
 
+        DeletItem : async (context,product, id) => {
+          console.log(product);
+          id = context.state.users.user_id;
+          fetch(`http://localhost:3000/users/${id}/cart/${product}`, {
+            method: "DELETE",
+            body :JSON.stringify(product),
+            headers: {
+              "Content-type": "application/json; charset=UTF-8",
+              // "x-auth-token": context.state.token,
+            },
+          })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data)
+            // if (data != null) {
+              context.dispatch("getCart", (id));
+            // }
+          });
+        }
   },
 
 

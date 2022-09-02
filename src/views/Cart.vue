@@ -15,7 +15,7 @@
                   {{ c.product_description }}
                 </p>
                 <div class="product-btns">
-                 <button  @click="add"  >Add to Cart</button> 
+                 <button  @click="this.$store.dispatch('DeletItem',c.product_id)"  >Remove from Cart</button> 
                 </div>
               </div>
             </div>
@@ -31,7 +31,8 @@
   </template>
   
   <script>
-  export default {
+    export default {
+    props: ["product_id"],
     computed: {
       cart() {
         return this.$store.state.cart;
@@ -40,7 +41,8 @@
     },
     mounted() {
       this.$store.dispatch("getCart");
-    },
+  }
+
   };
   </script>
   

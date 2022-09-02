@@ -1,6 +1,16 @@
 <template>
   <div class="products mx-auto">
     <h1>All Products</h1>
+
+    <div class="wrap">
+   <div class="search">
+      <input type="text" class="searchTerm" placeholder="What are you looking for?" v-model="search">
+      <button type="submit" class="searchButton">
+        <i class="fa fa-search"></i>
+     </button>
+   </div>
+</div>
+
     <div v-if="products">
       <div class="gallery">
         <div
@@ -34,10 +44,23 @@
   
   <script>
 export default {
+  props: ["product"],
+  data(){
+    return{
+      search: ''
+    }
+  },
   computed: {
     products() {
-      return this.$store.state.products;
-    },
+      return this.$store.state.products?.filter(products =>{
+          let Match = true;
+          if (!products.title.toLowerCase().includes(this.search.toLowerCase())) {
+              Match = false;
+          }
+          return Match
+          })
+        }
+    
   },
 
   mounted() {
@@ -49,11 +72,23 @@ export default {
   <style scoped>
 @import url("https://fonts.googleapis.com/css?family=Modak");
 
-* {
-  background-image: url(../assets/giphy.gif);
-  background-attachment: fixed;
-  background-size: cover;
-  background-repeat: no-repeat;
+.products {
+	background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+	/* background-size: 400% 400%; */
+	animation: gradient 15s ease infinite;
+	height: 100%;
+}
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
 }
 
 .products {
@@ -104,19 +139,49 @@ export default {
   font-weight: 700;
 }
 
-/*
+.search {
+  width: 100%;
+  position: relative;
+  display: flex;
+}
 
-The following rule will only run if your browser supports CSS grid.
+.searchTerm {
+  width: 100%;
+  border: 3px solid #00B4CC;
+  border-right: none;
+  padding: 5px;
+  height: 35px;
+  border-radius: 5px 0 0 5px;
+  outline: none;
+  color: #9DBFAF;
+}
 
-Remove or comment-out the code block below to see how the browser will fall-back to flexbox styling. 
+.searchTerm:focus{
+  color: #00B4CC;
+}
 
-*/
+.searchButton {
+  width: 40px;
+  height: 36px;
+  border: 1px solid #00B4CC;
+  background: #00B4CC;
+  text-align: center;
+  color: #fff;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+  font-size: 20px;
+}
 
-/* .text {
-  background-color: #04AA6D;
-  color: white;
-  font-size: 16px;
-  padding: 16px 32px;
-} */
+/*Resize the wrap to see the search bar change!*/
+.wrap{
+  width: 20%;
+  /* position: absolute; */
+  /* transform: translate(-50%, -50%); */
+}
+
+
+
+
+
 </style>
   

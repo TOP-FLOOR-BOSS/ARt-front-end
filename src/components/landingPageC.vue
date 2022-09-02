@@ -9,8 +9,15 @@
 
     <section>
       <div class="parallax-one">
-        <h2>Injured Generation</h2>
-      </div>
+        <h2>Injured Generation</h2>        
+        
+
+
+      </div>        
+      <div class="arrow"></div>
+      <div class="content">
+
+</div>
     </section>
 
     <section >
@@ -32,15 +39,9 @@
           the UGG brand. A cultural shift occurred as well - people were
           embracing, and feeling empowered, by living a more casual lifestyle
           and UGG became one of the symbols of this lifestyle. By 2000, a love
-          that began on the beaches had become an icon of casual style. It was
-          at this time that the love for UGG grew in the east, over the Rockies
-          and in Chicago. In 2000, UGG Sheepskin boots were first featured on
-          Oprah's Favorite Things® and Oprah emphatically declared that she
-          "LOOOOOVES her UGG boots." From that point on, the world began to
-          notice.
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex sint distinctio, debitis harum, tenetur inventore delectus, neque illo esse ipsa amet modi ea itaque earum quae qui. Nam, quasi quod?
+          that began on the beaches had become an icon of casual style.
         </p>
-         <router-link to="/login"><button type="submit" id="mutton" class="subBtn btn btn-light">Browse</button></router-link>  
+         <router-link to="/login"><button type="submit" id="mutton" class="subBtn btn btn-light">Join us</button></router-link>  
       </div>
 
 
@@ -76,6 +77,7 @@ export default {};
   float: right;
   /* padding: 10px 20px; */
   color: #6f03f4;
+  background: #f9a2ddaa;
   font-size: 36px;
   text-decoration: bold;
   text-transform: uppercase;
@@ -319,6 +321,72 @@ export default {};
   #mainframe .block {
     padding: 30px 15px;
     width: 290px;
+  }
+}
+
+.arrow {
+  width: 150px;
+  height: 50px;
+  position: relative;
+  right:-650px;
+  top: -60px;
+  background-image: url(https://www.youwenliang.com/Codepen/oval.svg);
+  background-size: 76px 66px;
+  background-repeat: no-repeat;
+  background-position: center top;
+  font-size: 13px;
+  font-family: 'Fira Sans', sans-serif;
+  color: #fff;
+  text-align: center;
+  line-height: 120px;
+}
+
+.arrow:before {
+  content: '';
+  width: 46px;
+  height: 46px;
+  background-image: url(https://www.youwenliang.com/Codepen/arrow.svg);
+  background-position: center 8px;
+  background-repeat: no-repeat;
+  display: block;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  margin: auto;
+  animation: move 2.5s infinite ease-out;
+  opacity: 0;
+}
+
+.arrow:after {
+  content: '';
+  width: 46px;
+  height: 46px;
+  background-image: url(https://www.youwenliang.com/Codepen/arrow.svg);
+  background-position: center 8px;
+  background-repeat: no-repeat;
+  display: block;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  margin: auto;
+  animation: move 2.5s infinite ease-out .75s;
+  opacity: 0;
+}
+
+@keyframes move {
+  0% {
+    opacity: 0;
+    background-position: center 8px;
+  }
+  24% {
+    opacity: 1;
+    background-position: center 17px;
+  }
+  48% {
+    opacity: 0;
+    background-position: center 20px;
   }
 }
 </style>
