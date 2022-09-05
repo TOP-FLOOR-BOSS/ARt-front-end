@@ -5,6 +5,7 @@ import axios from 'axios';
 export default createStore({
   state: {
     user: null ,
+    admin: false,
     users: null || JSON.parse(localStorage.getItem("user")),
     products: null,
     product: null,
@@ -47,16 +48,6 @@ export default createStore({
           console.log(data);
         },
 
-        //Logsin
-        // login: async (context, payload) => { 
-        //   console.log(payload);
-        //   let res = await axios.post('https://capt.herokuapp.com/register', payload);
-        //   let data = await res.data;
-        //   console.log(data);
-        // },
-
-
-
         // all products
         getProducts: async (context) => {
           await fetch("https://capt.herokuapp.com/products")
@@ -76,6 +67,40 @@ export default createStore({
         },
 
 
+        /// add product
+    addProduct: async (context, payload) => {
+      const {
+        title,
+        img,
+        product_description,
+        price,
+        quantity,
+
+      } = payload;
+      fetch("https://capt.herokuapp.com/products/", {
+          method: "post",
+          body: JSON.stringify({
+            title:title,
+            img: img,
+            product_description: product_description,
+            price: price,
+            quantity: quantity,
+          }),
+          headers: {
+            "content-type": "application/json; charset=UTF-8",
+            "x-auth-token": context.state.token,
+
+          },
+
+        })
+        .then((res) => res.json())
+        .then((data) => {
+          // alert(data.msg);
+          context.dispatch("getProducts");
+        });
+    },
+
+    // Login
         login(context, payload){
           const { email, user_password } = payload
           fetch('https://capt.herokuapp.com/login', {
@@ -116,7 +141,8 @@ export default createStore({
                 setTimeout(()=>{
                   router.push('/genre'), 3000
                 })
-              }else {
+              }
+              else {
                 // setTimeout(()=>{
                 //   router.push('/admin'), 3000
                 // })
@@ -203,7 +229,18 @@ export default createStore({
               context.dispatch("getCart", (id));
             // }
           });
+        },
+
+        adminGuy : (context) => {
+          let users = context.state.users
+          if (users != null) {
+            if(users.user_role === 'admin') {
+              context.state.admin = true 
+            }
+            context.dispatch('getCart')
+          }
         }
+
   },
 
 

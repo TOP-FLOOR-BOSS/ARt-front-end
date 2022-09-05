@@ -14,8 +14,14 @@
       </a>
 
       <span class="UseCart">
+        <router-link to="/login">
+         <a href=""><i class="fa fa-sign-in" aria-hidden="true"></i> </a> 
+        </router-link>
+
+        |
+
         <router-link to="/genre">
-          <a href=""><i class="fa fa-user-secret" aria-hidden="true"></i></a>
+          <a href=""><i class="fa fa-user" aria-hidden="true"></i></a>
         </router-link>
         |
 
@@ -83,6 +89,16 @@
                 <router-link to="/register">Register</router-link></a
               >
             </li>
+            <div v-if="admin">
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page">
+                <i class="fa fa-pencil" aria-hidden="true"></i>
+                <span class="icon"></span>
+                <router-link to="/admin">Admin</router-link></a
+              >
+            </li>
+            </div>
+
 
             <li>
               <button @click="logout">Logout</button>
@@ -96,6 +112,20 @@
 
 <script>
 export default {
+  mounted() {
+    this.$store.dispatch("adminGuy")
+},
+
+  computed :{
+    user() {
+      return this.$store.state.user;
+    },
+
+    admin() {
+      return this.$store.state.admin;
+    },
+  },
+
   methods: {
     logout() {
       this.$store.dispatch("logout");
@@ -147,4 +177,7 @@ export default {
     background-position: 0% 50%;
   }
 }
+
+
+
 </style>

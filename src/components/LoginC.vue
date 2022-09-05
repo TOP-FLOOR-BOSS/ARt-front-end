@@ -28,7 +28,7 @@
       <button type="submit" class="subBtn btn btn-light" @click="login()">
         Submit
       </button>
-      <p class="form-text">
+      <p class="form-text font-white">
         DOnt Have an account, <router-link to="/register">Sign up</router-link>
       </p>
     </form>
