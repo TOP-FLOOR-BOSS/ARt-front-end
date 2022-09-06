@@ -66,6 +66,21 @@ export default createStore({
               context.commit("setproduct", data.results[0])});
         },
 
+        updateProduct: async (context, product) => {
+          fetch(`https://capt.herokuapp.com/products/ ${product.product_id}`, {
+              method: "PUT",
+              body: JSON.stringify(product),
+              headers: {
+                "Content-type": "application/json; charset=UTF-8",
+                "x-auth-token": context.state.token,
+              },
+            })
+            .then((res) => res.json())
+            .then((data) => {
+              alert(data.msg);
+              context.dispatch("getProducts");
+            });
+        },
 
         /// add product
     addProduct: async (context, payload) => {
