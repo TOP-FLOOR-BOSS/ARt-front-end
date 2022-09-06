@@ -3,6 +3,7 @@
     <thead>
       <tr>
         <th class="prod">product</th>
+       <router-link to="/Useradmin"><th class="prod">Users</th></router-link> 
 
         <th scoped="col">
           <!-- <a class="btn" data-bs-toggle="modal"  data-bs-target="#addnew">
@@ -133,111 +134,17 @@
             type="button"
             class="btn btn-primary"
             data-bs-toggle="modal"
-            data-bs-target="#exampleModal"
+            :data-bs-target="'#update'+product.product_id"
             data-bs-whatever="@mdo"
           >
             Edit
           </button>     
-          <div
-            class="modal fade"
-            id="exampleModal"
-            tabindex="-1"
-            aria-labelledby="exampleModalLabel"
-            aria-hidden="true"
-          >
-            <div class="modal-dialog">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">
-                    Edit
-                  </h5>
-                  <button
-                    type="button"
-                    class="btn-close"
-                    data-bs-dismiss="modal"
-                    aria-label="Close"
-                  ></button>
-                </div>
-                <div class="modal-body">
-                  <form>
-                    <div class="mb-3">
-                      <label for="recipient-name" class="col-form-label"
-                        >Title:</label
-                      >
-                      <input
-                        type="text"
-                        class="form-control"
-                        id="recipient-name"
-                        v-model="title"
-                      />
-                    </div>
-                    <div class="mb-3">
-                      <label for="recipient-name" class="col-form-label"
-                        >Category:</label
-                      >
-                      <input
-                        type="text"
-                        class="form-control"
-                        id="recipient-name"
-                        name="catergory"
-                        v-model="catergory"
-                      />
-                    </div>
-                    <div class="mb-3">
-                      <label for="recipient-name" class="col-form-label"
-                        >Product Description:</label
-                      >
-                      <input
-                        type="text"
-                        class="form-control"
-                        id="recipient-name"
-                        v-model="product_description"
-                      />
-                    </div>
-                    <div class="mb-3">
-                      <label for="recipient-name" class="col-form-label"
-                        >Image:</label
-                      >
-                      <input
-                        type="url"
-                        class="form-control"
-                        id="recipient-name"
-                        v-model="img"
-                      />
-                    </div>
-                    <div class="mb-3">
-                      <label for="recipient-name" class="col-form-label"
-                        >Price:</label
-                      >
-                      <input
-                        type="text"
-                        class="form-control"
-                        id="recipient-name"
-                        v-model="price"
-                      />
-                    </div>
- 
-                  </form>
-                </div>
-                <div class="modal-footer">
-                  <button
-                    type="button"
-                    class="btn btn-secondary"
-                    data-bs-dismiss="modal"
-                  >
-                    Cancel
-                  </button>
-                  <button type="button" 
-                  class="btn btn-primary"
-                  @click="edit">
-                    Edit Product
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-          
-          <button type="btn" class="btn" id="btnSubmit1">Delete</button>
+
+          <!-- modal -->
+          <EditModal :product="product"/>
+          <button type="btn" class="btn" id="btnSubmit1"
+          @click="this.$store.dispatch('deleteProduct', product.product_id)"
+          >Delete</button>
         </th>
       </tr>
     </tbody>
@@ -245,49 +152,45 @@
 </template>
 
 <script>
+import EditModal from '@/components/EditModal.vue';
 
 
 export default {
-  data() {
-    return {
-      title:"",  
-      catergory: "",
-      product_description:"",
-      img:"",
-      price:"",
-
-    };
-  },
-  mounted() {
-    this.$store.dispatch("getProducts");
-  },
-
-  computed: {
-    products() {
-      return this.$store.state.products;
+    props: ["products"],
+    data() {
+        return {
+            title: "",
+            catergory: "",
+            product_description: "",
+            img: "",
+            price: "",
+        };
     },
-  },
-
-  methods : {
-    add() {
-      return this.$store.dispatch("addProduct",{
-        title : this.title,
-        catergory : this.catergory,
-        product_description : this.product_description,
-        img : this.img,
-        price : this.price
-
-      })
+    mounted() {
+        this.$store.dispatch("getProducts");
     },
+    computed: {
+        products() {
+            return this.$store.state.products;
+        },
+    },
+    methods: {
+        add() {
+            return this.$store.dispatch("addProduct", {
+                title: this.title,
+                catergory: this.catergory,
+                product_description: this.product_description,
+                img: this.img,
+                price: this.price
+            });
+        },
 
-    update() {
-      return this.$store.dispatch("updateProduct", this.product)
-    }
-  }
+    },
+    components: { EditModal }
 };
 </script>
 
-<style>
+<style >
 .prod {
   font-size: 30px;
   text-decoration: underline;

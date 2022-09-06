@@ -1,24 +1,22 @@
-import { createStore } from 'vuex'
-import router from '@/router'
-import axios from 'axios';
+import { createStore } from "vuex";
+import router from "@/router";
+import axios from "axios";
 
 export default createStore({
   state: {
-    user: null ,
+    user: null,
     admin: false,
     users: null || JSON.parse(localStorage.getItem("user")),
     products: null,
     product: null,
-    cart : null
+    cart: null,
   },
-  getters: {
-  },
-
+  getters: {},
 
   mutations: {
     setusers: (state, users) => {
-      state.users= users;
-      localStorage.setItem("user", JSON.stringify(users))
+      state.users = users;
+      localStorage.setItem("user", JSON.stringify(users));
     },
 
     setCart: (state, cart) => {
@@ -31,83 +29,111 @@ export default createStore({
     },
 
     setproducts: (state, products) => {
-      state.products = products
+      state.products = products;
     },
 
     setproduct: (state, product) => {
-      state.product = product
-    }
-
+      state.product = product;
+    },
   },
   actions: {
-        // adds user to db
-        register: async (context, payload) => { 
-          console.log(payload);
-          let res = await axios.post('https://capt.herokuapp.com/register', payload);
-          let data = await res.data;
-          console.log(data);
-        },
+    // adds user to db
+    register: async (context, payload) => {
+      console.log(payload);
+      let res = await axios.post(
+        "https://capt.herokuapp.com/register",
+        payload
+      );
+      let data = await res.data;
+      console.log(data);
+    },
 
-        // all products
-        getProducts: async (context) => {
-          await fetch("https://capt.herokuapp.com/products")
-            .then((res) => res.json())
-            .then((data) => {
-              context.commit("setproducts", data.results)});
-        },
+    getUsers: async (context) => {
+      await fetch('http://localhost:3000/users  ')
+        .then(users => users.json())
+        .then(usersJson => context.state.users = usersJson.user)
         
-        //Single Product
+    },
 
-        getProduct: async (context, id) => {
-          await fetch("https://capt.herokuapp.com/products/" + id)
-            .then((res) => res.json())
-            .then((data) => {
-              console.log(data.results[0]);
-              context.commit("setproduct", data.results[0])});
+  //=========================== Products ===================================================
+
+    // all products
+    getProducts: async (context) => {
+      await fetch("https://capt.herokuapp.com/products")
+        .then((res) => res.json())
+        .then((data) => {
+          context.commit("setproducts", data.results);
+        });
+    },
+
+    //Single Product
+
+    getProduct: async (context, id) => {
+      await fetch("https://capt.herokuapp.com/products/" + id)
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data.results[0]);
+          context.commit("setproduct", data.results[0]);
+        });
+    },
+    
+    updateProduct: async (context, payload) => {
+      const { id, title, catergory, product_description, img, price } = payload;
+      fetch(`https://capt.herokuapp.com/products/` + id, {
+        method: "PUT",
+        body: JSON.stringify({
+          title: title,
+          catergory: catergory,
+          product_description: product_description,
+          img: img,
+          price: price,
+        }),
+        headers: {
+          "Content-type": "application/json; charset=UTF-8",
         },
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          alert(data.msg);
+          context.dispatch("getProducts", data.msg);
+        });
+    },
 
-        updateProduct: async (context, product) => {
-          fetch(`https://capt.herokuapp.com/products/ ${product.product_id}`, {
-              method: "PUT",
-              body: JSON.stringify(product),
-              headers: {
-                "Content-type": "application/json; charset=UTF-8",
-                "x-auth-token": context.state.token,
-              },
-            })
-            .then((res) => res.json())
-            .then((data) => {
-              alert(data.msg);
-              context.dispatch("getProducts");
-            });
+    // Deletes product
+    deleteProduct: async (context, id) => {
+      // fetch("http://localhost:3000/products/" + id, {
+      fetch("https://capt.herokuapp.com/products/" + id, {
+        method: "DELETE",
+        headers: {
+          "Content-type": "application/json; charset=UTF-8",
+          "x-auth-token": context.state.token,
         },
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+          context.dispatch("getProducts");
+        });
+    },
 
-        /// add product
+
+    /// add product
     addProduct: async (context, payload) => {
-      const {
-        title,
-        img,
-        product_description,
-        price,
-        quantity,
-
-      } = payload;
+      const { title, img, product_description, price, quantity } = payload;
       fetch("https://capt.herokuapp.com/products/", {
-          method: "post",
-          body: JSON.stringify({
-            title:title,
-            img: img,
-            product_description: product_description,
-            price: price,
-            quantity: quantity,
-          }),
-          headers: {
-            "content-type": "application/json; charset=UTF-8",
-            "x-auth-token": context.state.token,
-
-          },
-
-        })
+        method: "post",
+        body: JSON.stringify({
+          title: title,
+          img: img,
+          product_description: product_description,
+          price: price,
+          quantity: quantity,
+        }),
+        headers: {
+          "content-type": "application/json; charset=UTF-8",
+          "x-auth-token": context.state.token,
+        },
+      })
         .then((res) => res.json())
         .then((data) => {
           // alert(data.msg);
@@ -115,150 +141,147 @@ export default createStore({
         });
     },
 
+    //=========================== Login ===================================================
+
     // Login
-        login(context, payload){
-          const { email, user_password } = payload
-          fetch('https://capt.herokuapp.com/login', {
-          method: 'PATCH',
-          body: JSON.stringify({
-              email: email,
-              user_password: user_password,
-          }),
-          headers: {
-            'Content-type': 'application/json; charset=UTF-8',
-          },
-          })
-          .then((response) => response.json())
-          .then((data) => {
-            console.log(data);  
-            let {msg, token, results} = data;
-              context.commit('setusers',data.results);
-
-            // if (data.msg == 'Email Not Found. Please register') {
-            //   alert(data.msg)
-            // } else {
-            //   if (data.msg == 'Password is Incorrect') {
-            //     alert(data.msg)
-            //   } else {
-            //     alert(`Welcome, ${data.user[0].user_name}`)
-            //     context.commit('setusers',data.user[0])
-            //     context.commit('setToken',data.token)
-            //     // context.dispatch('setusers')
-            //     setTimeout(()=>{
-            //       router.push('/about'), 3000
-            //     })
-            //   }
-            // }
-            if(msg == 'Logged in') {
-              context.commit('setusers',results);
-              context.commit('setToken',token);
-              if(results.user_role === 'user') {
-                setTimeout(()=>{
-                  router.push('/genre'), 3000
-                })
-              }
-              else {
-                // setTimeout(()=>{
-                //   router.push('/admin'), 3000
-                // })
-              }
-            }
-    
-          });
-    
+    login(context, payload) {
+      const { email, user_password } = payload;
+      fetch("https://capt.herokuapp.com/login", {
+        method: "PATCH",
+        body: JSON.stringify({
+          email: email,
+          user_password: user_password,
+        }),
+        headers: {
+          "Content-type": "application/json; charset=UTF-8",
         },
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          console.log(data);
+          let { msg, token, results } = data;
+          context.commit("setusers", data.results);
 
-        logout: (context) => {
-          localStorage.removeItem('user');
-          // window.location.reload()
-          console.log(context.state.user)
-          setTimeout(()=>{
-            router.push('/'), 3000
-          })
-          // if(results.user_role === 'user') {
+          // if (data.msg == 'Email Not Found. Please register') {
+          //   alert(data.msg)
+          // } else {
+          //   if (data.msg == 'Password is Incorrect') {
+          //     alert(data.msg)
+          //   } else {
+          //     alert(`Welcome, ${data.user[0].user_name}`)
+          //     context.commit('setusers',data.user[0])
+          //     context.commit('setToken',data.token)
+          //     // context.dispatch('setusers')
+          //     setTimeout(()=>{
+          //       router.push('/about'), 3000
+          //     })
+          //   }
           // }
-        },
-
-        getCart: (context, id) => {
-          if (context.state.users.user_id === null) {
-            alert("Please Login");
-          } else {
-            id = context.state.users.user_id;
-            fetch(`https://capt.herokuapp.com/users/${id}/cart`, {
-              method: "GET",
-              headers: {
-                "Content-type": "application/json; charset=UTF-8",
-                "x-auth-token": context.state.token,
-              },
-            }) 
-              .then((res) => res.json())
-              .then((data) => {
-                // console.log(data);
-                if (data.results != null) {
-                  context.commit("setCart", (data.results));
-                }
+          if (msg == "Logged in") {
+            context.commit("setusers", results);
+            context.commit("setToken", token);
+            if (results.user_role === "user") {
+              setTimeout(() => {
+                router.push("/genre"), 3000;
               });
+            } else {
+              // setTimeout(()=>{
+              //   router.push('/admin'), 3000
+              // })
+            }
           }
-        },
+        });
+    },
 
-        addToCart : async (context, product, id) => {
-          console.log(product);
-          if (context.state.users === null) {
-            alert("Please Login");
-          } else {
-            id = context.state.users.user_id;
-            fetch(`http://localhost:3000/users/${id}/cart`, {
-            // fetch(`https://capt.herokuapp.com/users/${id}/cart`, {
-              method: "POST",
-              body : JSON.stringify(product),
-              headers: {
-                "Content-type": "application/json; charset=UTF-8",
-                // "x-auth-token": context.state.token,
-              },
-            })
-              .then((res) => res.json())
-              .then((data) => {
-                console.log(data);
-                // if (data != null) {
-                  context.dispatch("getCart", (id));
-                // }
-              });
-          }
-        },
+    logout: (context) => {
+      localStorage.removeItem("user");
+      // window.location.reload()
+      console.log(context.state.user);
+      setTimeout(() => {
+        router.push("/"), 3000;
+      });
+      // if(results.user_role === 'user') {
+      // }
+    },
 
-        DeletItem : async (context,product, id) => {
-          console.log(product);
-          id = context.state.users.user_id;
-          fetch(`http://localhost:3000/users/${id}/cart/${product}`, {
-            method: "DELETE",
-            body :JSON.stringify(product),
-            headers: {
-              "Content-type": "application/json; charset=UTF-8",
-              // "x-auth-token": context.state.token,
-            },
-          })
+    //=========================== CArt ===================================================
+    getCart: (context, id) => {
+      if (context.state.users.user_id === null) {
+        alert("Please Login");
+      } else {
+        id = context.state.users.user_id;
+        fetch(`https://capt.herokuapp.com/users/${id}/cart`, {
+          method: "GET",
+          headers: {
+            "Content-type": "application/json; charset=UTF-8",
+            "x-auth-token": context.state.token,
+          },
+        })
           .then((res) => res.json())
           .then((data) => {
-            console.log(data)
+            // console.log(data);
+            if (data.results != null) {
+              context.commit("setCart", data.results);
+            }
+          });
+      }
+    },
+
+    addToCart: async (context, product, id) => {
+      console.log(product);
+      if (context.state.users === null) {
+        alert("Please Login");
+      } else {
+        id = context.state.users.user_id;
+        fetch(`http://localhost:3000/users/${id}/cart`, {
+          // fetch(`https://capt.herokuapp.com/users/${id}/cart`, {
+          method: "POST",
+          body: JSON.stringify(product),
+          headers: {
+            "Content-type": "application/json; charset=UTF-8",
+            // "x-auth-token": context.state.token,
+          },
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
             // if (data != null) {
-              context.dispatch("getCart", (id));
+            context.dispatch("getCart", id);
             // }
           });
+      }
+    },
+
+    DeletItem: async (context, product, id) => {
+      console.log(product);
+      id = context.state.users.user_id;
+      fetch(`http://localhost:3000/users/${id}/cart/${product}`, {
+        method: "DELETE",
+        body: JSON.stringify(product),
+        headers: {
+          "Content-type": "application/json; charset=UTF-8",
+          // "x-auth-token": context.state.token,
         },
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+          // if (data != null) {
+          context.dispatch("getCart", id);
+          // }
+        });
+    },
 
-        adminGuy : (context) => {
-          let users = context.state.users
-          if (users != null) {
-            if(users.user_role === 'admin') {
-              context.state.admin = true 
-            }
-            context.dispatch('getCart')
-          }
+    adminGuy: (context) => {
+      let users = context.state.users;
+      if (users != null) {
+        if (users.user_role === "admin") {
+          context.state.admin = true;
         }
-
+        context.dispatch("getCart");
+      }
+    },
   },
 
-
-  modules: {
-  }
-})
+  modules: {},
+});
