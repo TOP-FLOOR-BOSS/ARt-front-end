@@ -142,6 +142,7 @@
 
           <!-- modal -->
           <EditModal :product="product"/>
+          
           <button type="btn" class="btn" id="btnSubmit1"
           @click="this.$store.dispatch('deleteProduct', product.product_id)"
           >Delete</button>

@@ -49,12 +49,49 @@ export default createStore({
     },
 
     getUsers: async (context) => {
-      await fetch('http://localhost:3000/users  ')
-        .then(users => users.json())
-        .then(usersJson => context.state.users = usersJson.user)
+      await fetch('https://capt.herokuapp.com/users')
+        .then(res => res.json())
+        .then(data => {
+          context.commit("setusers", data.results);
+        })
         
     },
 
+    updateUser: async (context, payload) => {
+      const { id, user_name, user_lastname, email, user_role,  } = payload;
+      fetch(`https://capt.herokuapp.com/users/` + id, {
+        method: "PUT",
+        body: JSON.stringify({
+          user_name: user_name,
+          user_lastname: user_lastname,
+          email: email,
+          user_role: user_role 
+}),
+        headers: {
+          "Content-type": "application/json; charset=UTF-8",
+        },
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          alert(data.msg);
+          context.dispatch("getUsers", data.msg);
+        });
+    },
+
+    deleteUser: async (context, id) => {
+      fetch("https://capt.herokuapp.com/users/" + id, {
+        method: "DELETE",
+        headers: {
+          "Content-type": "application/json; charset=UTF-8",
+          "x-auth-token": context.state.token,
+        },
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+          context.dispatch("getUser");
+        });
+    },
   //=========================== Products ===================================================
 
     // all products
