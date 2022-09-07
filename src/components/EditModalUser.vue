@@ -1,7 +1,7 @@
 <template>
     <div
          class="modal fade"
-         :id="'updateUser'+user.user_id"
+         :id="'updateUser'+ user.user_id"
          tabindex="-1"
          aria-labelledby="exampleModalLabel"
          aria-hidden="true"
@@ -79,7 +79,7 @@
                </button>
                <button type="button" 
                class="btn btn-primary"
-               @click="updateUser">
+               @click="update">
                  Update User
                </button>
              </div>
