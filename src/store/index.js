@@ -36,6 +36,7 @@ export default createStore({
       state.product = product;
     },
   },
+
   actions: {
     // adds user to db
     register: async (context, payload) => {
@@ -181,9 +182,9 @@ export default createStore({
     //=========================== Login ===================================================
 
     // Login
-    login(context, payload) {
+    login: async (context, payload) =>{
       const { email, user_password } = payload;
-      fetch("https://capt.herokuapp.com/login", {
+      fetch("https://capt.herokuapp.com/users/login", {
         method: "PATCH",
         body: JSON.stringify({
           email: email,
@@ -270,8 +271,7 @@ export default createStore({
         alert("Please Login");
       } else {
         id = context.state.users.user_id;
-        fetch(`http://localhost:3000/users/${id}/cart`, {
-          // fetch(`https://capt.herokuapp.com/users/${id}/cart`, {
+        fetch(`https://capt.herokuapp.com/users/${id}/cart`, {
           method: "POST",
           body: JSON.stringify(product),
           headers: {
