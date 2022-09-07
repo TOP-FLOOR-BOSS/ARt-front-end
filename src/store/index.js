@@ -4,9 +4,9 @@ import axios from "axios";
 
 export default createStore({
   state: {
-    user: null,
+    user: null || JSON.parse(localStorage.getItem("user")),
     admin: false,
-    users: null || JSON.parse(localStorage.getItem("user")),
+    users: null ,
     products: null,
     product: null,
     cart: null,
@@ -16,7 +16,12 @@ export default createStore({
   mutations: {
     setusers: (state, users) => {
       state.users = users;
-      localStorage.setItem("user", JSON.stringify(users));
+      // localStorage.setItem("user", JSON.stringify(users));
+    },
+    
+    setuser: (state, user) => {
+      state.user = user;
+      localStorage.setItem("user", JSON.stringify(user));
     },
 
     setCart: (state, cart) => {
@@ -183,13 +188,10 @@ export default createStore({
 
     // Login
     login: async (context, payload) =>{
-      const { email, user_password } = payload;
-      fetch("https://capt.herokuapp.com/users/login", {
+      // const { email, user_password } = payload;
+      fetch("https://capt.herokuapp.com/login", {
         method: "PATCH",
-        body: JSON.stringify({
-          email: email,
-          user_password: user_password,
-        }),
+        body: JSON.stringify(payload),
         headers: {
           "Content-type": "application/json; charset=UTF-8",
         },
@@ -198,56 +200,32 @@ export default createStore({
         .then((data) => {
           console.log(data);
           let { msg, token, results } = data;
-          context.commit("setusers", data.results);
+          context.commit("setuser", data.results);
+          setTimeout (() => {
+            router.push("/genre")
+          },2000)
 
-          // if (data.msg == 'Email Not Found. Please register') {
-          //   alert(data.msg)
-          // } else {
-          //   if (data.msg == 'Password is Incorrect') {
-          //     alert(data.msg)
-          //   } else {
-          //     alert(`Welcome, ${data.user[0].user_name}`)
-          //     context.commit('setusers',data.user[0])
-          //     context.commit('setToken',data.token)
-          //     // context.dispatch('setusers')
-          //     setTimeout(()=>{
-          //       router.push('/about'), 3000
-          //     })
-          //   }
-          // }
-          if (msg == "Logged in") {
-            context.commit("setusers", results);
-            context.commit("setToken", token);
-            if (results.user_role === "user") {
-              setTimeout(() => {
-                router.push("/genre"), 3000;
-              });
-            } else {
-              // setTimeout(()=>{
-              //   router.push('/admin'), 3000
-              // })
-            }
-          }
         });
     },
 
     logout: (context) => {
-      localStorage.removeItem("user");
       // window.location.reload()
+      localStorage.removeItem("user");
+      context.state.user = null
       console.log(context.state.user);
-      setTimeout(() => {
-        router.push("/"), 3000;
-      });
+      // setTimeout(() => {
+        router.push("/");
+      // }, 3000);
       // if(results.user_role === 'user') {
       // }
     },
 
     //=========================== CArt ===================================================
     getCart: (context, id) => {
-      if (context.state.users.user_id === null) {
+      if (context.state.user.user_id === null) {
         alert("Please Login");
       } else {
-        id = context.state.users.user_id;
+        id = context.state.user.user_id;
         fetch(`https://capt.herokuapp.com/users/${id}/cart`, {
           method: "GET",
           headers: {
@@ -267,10 +245,10 @@ export default createStore({
 
     addToCart: async (context, product, id) => {
       console.log(product);
-      if (context.state.users === null) {
+      if (context.state.user === null) {
         alert("Please Login");
       } else {
-        id = context.state.users.user_id;
+        id = context.state.user.user_id;
         fetch(`https://capt.herokuapp.com/users/${id}/cart`, {
           method: "POST",
           body: JSON.stringify(product),
@@ -291,7 +269,7 @@ export default createStore({
 
     DeletItem: async (context, product, id) => {
       console.log(product);
-      id = context.state.users.user_id;
+      id = context.state.user.user_id;
       fetch(`http://localhost:3000/users/${id}/cart/${product}`, {
         method: "DELETE",
         body: JSON.stringify(product),
@@ -310,9 +288,9 @@ export default createStore({
     },
 
     adminGuy: (context) => {
-      let users = context.state.users;
-      if (users != null) {
-        if (users.user_role === "admin") {
+      let user = context.state.user;
+      if (user != null) {
+        if (user.user_role === "admin") {
           context.state.admin = true;
         }
         context.dispatch("getCart");

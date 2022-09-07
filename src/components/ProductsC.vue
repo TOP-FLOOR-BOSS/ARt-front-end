@@ -92,7 +92,6 @@ export default {
 }
 
 .products {
-  margin-top: 80px;
   max-width: 100rem;
   /* margin: 0 auto; */
   padding: 0 2rem 2rem;

@@ -9,18 +9,13 @@
 
     <section>
       <div class="parallax-one">
-        <h2>Injured Generation</h2>        
-        
-
-
-      </div>        
+        <h2>Injured Generation</h2>
+      </div>
       <div class="arrow"></div>
-      <div class="content">
-
-</div>
+      <div class="content"></div>
     </section>
 
-    <section >
+    <section>
       <div class="block">
         <p>
           <span class="first-character sc">I</span> What is Injured Generation?
@@ -30,22 +25,26 @@
         </p>
         <p class="line-break margin-top-10"></p>
         <p class="margin-top-10">
-          The UGG brand began to symbolize those who embraced sport and a
-          relaxed, active lifestyle. More than that, an emotional connection and
-          a true feeling of love began to grow for UGG boots, just as Brian had
-          envisioned. People didn't just like wearing UGG boots, they fell in
-          love with them and literally could not take them off. By the end of
-          the 90's, celebrities and those in the fashion world took notice of
-          the UGG brand. A cultural shift occurred as well - people were
-          embracing, and feeling empowered, by living a more casual lifestyle
-          and UGG became one of the symbols of this lifestyle. By 2000, a love
-          that began on the beaches had become an icon of casual style.
+          The IG (Injured Generation) brand began to symbolize those who
+          embraced art that is differnet and accepts their true honest selfs.
+          More than that, an special connection and a true feeling of each
+          artist through their artwork, just as I had envisioned. People didn't
+          just like abstract art, they fell in love with it and even inspired
+          others to pick a brush. By the end of the 20's I envision a setting
+          where style, and fashion would change on a scale, almost like an
+          escpae from reality and the every day norm - in my mind people would
+          embrace themselves through the inspiration of these art work on
+          display, they wouldnt think twice on what to wear, instead it should
+          spark creativity and confidence within these individuals. By 2050, a
+          love art should be on everyon's heart, no matter how simple or how
+          abstract, its the beuty within.
         </p>
-         <router-link to="/login"><button type="submit" id="mutton" class="subBtn btn btn-light">Join us</button></router-link>  
+        <router-link to="/login"
+          ><button type="submit" id="mutton" class="subBtn btn btn-light">
+            Join us
+          </button></router-link
+        >
       </div>
-
-
-
     </section>
   </div>
 </template>
@@ -82,7 +81,7 @@ export default {};
   text-decoration: bold;
   text-transform: uppercase;
   width: 97%;
-  transition: .5s;
+  transition: 0.5s;
   letter-spacing: 4px;
   top: 97%;
   font-family: "Modak", cursive;
@@ -94,10 +93,8 @@ export default {};
   background: #230b27;
   color: #fff;
   border-radius: 5px;
-  box-shadow: 0 0 5px #f45f03,
-              0 0 25px #ffbf00,
-              0 0 50px #f40303,
-              0 0 100px #f4ec03;
+  box-shadow: 0 0 5px #f45f03, 0 0 25px #ffbf00, 0 0 50px #f40303,
+    0 0 100px #f4ec03;
 }
 
 #mutton span {
@@ -118,11 +115,11 @@ export default {};
   0% {
     left: -100%;
   }
-  50%,100% {
+  50%,
+  100% {
     left: 100%;
   }
 }
-
 
 #main {
   width: 100%;
@@ -145,7 +142,7 @@ export default {};
 }
 
 #mainframe {
-  padding-top: 30px;
+  padding-top: 18x;
 }
 
 /* Typography */
@@ -328,21 +325,21 @@ export default {};
   width: 150px;
   height: 50px;
   position: relative;
-  right:-650px;
+  right: -650px;
   top: -60px;
   background-image: url(https://www.youwenliang.com/Codepen/oval.svg);
   background-size: 76px 66px;
   background-repeat: no-repeat;
   background-position: center top;
   font-size: 13px;
-  font-family: 'Fira Sans', sans-serif;
+  font-family: "Fira Sans", sans-serif;
   color: #fff;
   text-align: center;
   line-height: 120px;
 }
 
 .arrow:before {
-  content: '';
+  content: "";
   width: 46px;
   height: 46px;
   background-image: url(https://www.youwenliang.com/Codepen/arrow.svg);
@@ -359,7 +356,7 @@ export default {};
 }
 
 .arrow:after {
-  content: '';
+  content: "";
   width: 46px;
   height: 46px;
   background-image: url(https://www.youwenliang.com/Codepen/arrow.svg);
@@ -371,7 +368,7 @@ export default {};
   left: 0px;
   right: 0px;
   margin: auto;
-  animation: move 2.5s infinite ease-out .75s;
+  animation: move 2.5s infinite ease-out 0.75s;
   opacity: 0;
 }
 

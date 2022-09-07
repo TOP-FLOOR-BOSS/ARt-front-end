@@ -7,26 +7,27 @@
 
   </nav> -->
 
-  <nav class="navbar hulu fixed-top">
+  <nav class="navbar hulu sticky-top">
     <div class="container-fluid">
-      <a class="navbar-brand" href="/">
-        <i class="fa fa-arrows-alt" aria-hidden="true"></i>
+      
+      <a class="navbar-brand">
+      <i class="fa fa-arrows-alt"></i>
       </a>
 
       <span class="UseCart">
         <router-link to="/login">
-         <a href=""><i class="fa fa-sign-in" aria-hidden="true"></i> </a> 
+          <a><i class="fa fa-sign-in"></i> </a>
         </router-link>
 
         |
 
         <router-link to="/genre">
-          <a href=""><i class="fa fa-user" aria-hidden="true"></i></a>
+          <a><i class="fa fa-user"></i></a>
         </router-link>
         |
 
         <router-link to="/cart">
-          <a href=""><i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
+          <a><i class="fa fa-shopping-cart"></i></a>
         </router-link>
       </span>
 
@@ -58,7 +59,7 @@
           <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
             <li class="nav-item">
               <router-link to="/">
-                <a class="nav-link active" aria-current="page">
+                <a class="nav-link">
                   <i class="fa fa-home" aria-hidden="true"></i>
                   <span class="icon"></span>
                   Home
@@ -66,14 +67,14 @@
               </router-link>
             </li>
             <li class="nav-item">
-              <a class="nav-link" aria-current="page">
+              <a class="nav-link">
                 <i class="fa fa-id-card" aria-hidden="true"></i>
                 <span class="icon"></span>
                 <router-link to="/genre"> About</router-link></a
               >
             </li>
             <li class="nav-item">
-              <a class="nav-link" aria-current="page"
+              <a class="nav-link"
                 ><router-link to="/genre">
                   <i class="fa fa-cubes" aria-hidden="true"></i>
                   <span class="icon"></span>
@@ -83,26 +84,26 @@
             </li>
 
             <li class="nav-item">
-              <a class="nav-link" aria-current="page">
+              <a class="nav-link">
                 <i class="fa fa-pencil" aria-hidden="true"></i>
                 <span class="icon"></span>
                 <router-link to="/register">Register</router-link></a
               >
             </li>
+
             <div v-if="admin">
-            <li class="nav-item">
-              <a class="nav-link" aria-current="page">
-                <i class="fa fa-pencil" aria-hidden="true"></i>
-                <span class="icon"></span>
-                <router-link to="/admin">Admin</router-link></a
-              >
-            </li>
+              <li class="nav-item">
+                <a class="nav-link">
+                  <i class="fa fa-pencil" aria-hidden="true"></i>
+                  <span class="icon"></span>
+                  <router-link to="/admin">Admin</router-link></a
+                >
+              </li>
             </div>
 
-
-            <li>
-              <button @click="logout">Logout</button>
-            </li>
+            <!-- <li> -->
+              <button type="button" @click="logout">Logout</button>
+            <!-- </li> -->
           </ul>
         </div>
       </div>
@@ -111,12 +112,13 @@
 </template>
 
 <script>
+import router from '@/router';
 export default {
   mounted() {
-    this.$store.dispatch("adminGuy")
-},
+    this.$store.dispatch("adminGuy");
+  },
 
-  computed :{
+  computed: {
     user() {
       return this.$store.state.user;
     },
@@ -128,7 +130,15 @@ export default {
 
   methods: {
     logout() {
-      this.$store.dispatch("logout");
+      // this.$store.dispatch("logout");
+      localStorage.removeItem("user");
+      this.$store.state.user = null;
+      // console.log(context.state.user);
+      // setTimeout(() => {
+      router.push("/");
+      // }, 3000);
+      // if(results.user_role === 'user') {
+      // }
     },
   },
 };
@@ -141,6 +151,7 @@ export default {
   background-size: 400% 400%;
   animation: gradient 15s ease infinite;
   /* padding-bottom: 12px; */
+  min-height: 10vh;
 }
 
 .offcanvas-body {
@@ -177,7 +188,4 @@ export default {
     background-position: 0% 50%;
   }
 }
-
-
-
 </style>

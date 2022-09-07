@@ -63,7 +63,7 @@
                         type="url"
                         class="form-control"
                         id="recipient-name"
-                        v-model="img"
+                        v-model="product.img"
                       />
                     </div>
                     <div class="mb-3">

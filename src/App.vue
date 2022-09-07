@@ -1,8 +1,8 @@
 <template>
   <nav-c/>
-  <div class="mt-5 min-vh-100">
+  <!-- <div class="mt-5 min-vh-100"> -->
     <router-view/>
-  </div>
+  <!-- </div> -->
 </template>
 
 <script>

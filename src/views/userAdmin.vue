@@ -20,7 +20,7 @@
             type="button"
             class="btn btn-primary"
             data-bs-toggle="modal"
-            :data-bs-target="'#update'+user.user_id"
+            :data-bs-target="'#updateUser'+user.user_id"
             data-bs-whatever="@mdo"
           >
             Edit
