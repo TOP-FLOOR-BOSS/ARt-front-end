@@ -1,51 +1,56 @@
 <template>
-  
   <div class="login-box">
-    <h2 class="text-light">Register</h2>
+    <h2 class="headings">Register</h2>
     <form @submit.prevent="register" id="register">
-      <div class="mb-3 user-box">
-        <label class="form-label">Email address</label>
-        <input
-          type="email"
-          v-model="email"
-          class="form-control"
-          id="exampleInputEmail1"
-          aria-describedby="emailHelp"
-        />
-      </div>
-      <div class="mb-3 user-box">
-        <label class="form-label">Password</label>
-        <input
-          type="password"
-          v-model="user_password"
-          class="form-control"
-          id="exampleInputPassword1"
-        />
-      </div>
-      <div class="mb-3 user-box">
-        <label class="form-label">Name</label>
-        <input
-          type="text"
-          v-model="user_name"
-          class="form-control"
-          id="exampleInputPassword1"
-        />
-      </div>
-      <div class="mb-3 user-box">
-        <label class="form-label">Surname</label>
-        <input
-          type="text"
-          v-model="user_lastname"
-          class="form-control"
-          id="exampleInputPassword1"
-        />
+      <div class="row">
+
+        <div class="col ">
+          <div class="mb-3 user-box">
+            <label class="form-label">Email address</label>
+            <input
+              type="email"
+              v-model="email"
+              class="form-control "
+              id="exampleInputEmail1"
+              aria-describedby="emailHelp"
+            />
+          </div>
+          <div class="mb-3 user-box">
+            <label class="form-label">Password</label>
+            <input
+              type="password"
+              v-model="user_password"
+              class="form-control"
+              id="exampleInputPassword1"
+            />
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="mb-3 user-box">
+            <label class="form-label">Name</label>
+            <input
+              type="text"
+              v-model="user_name"
+              class="form-control"
+              id="exampleInputPassword1"
+            />
+          </div>
+          <div class="mb-3 user-box">
+            <label class="form-label">Surname</label>
+            <input
+              type="text"
+              v-model="user_lastname"
+              class="form-control"
+              id="exampleInputPassword1"
+            />
+          </div>
+        </div>
       </div>
 
-
-      <button type="submit" class="subBtn btn btn-primary">Submit</button>
+      <button type="submit" class="subBtn btn">Submit</button>
     </form>
   </div>
-
 </template>
   
   <script>
@@ -80,6 +85,17 @@ export default {
 </script>
 
   <style>
+
+@import url("https://fonts.googleapis.com/css?family=Modak");
+
+.headings {
+  font-family: "Modak", cursive;
+  font-size: 64px;
+  text-shadow: -5px 0 black, 0 8px black, 1px 0 black, 0 -1px black;
+  color: black;
+  padding: 0;
+  margin: 0;
+}
 body {
   margin: 0;
   padding: 0;
@@ -93,18 +109,19 @@ body {
 .login-box {
   display: block;
   position: absolute;
-  top: 50%;
+  top: 55%;
   left: 50%;
-  height: 100% ; 
-  width: 400px;
+  width: 600px;
   padding: 80px;
   transform: translate(-50%, -50%);
-  background: rgba(148, 105, 105, 0.548);
+  transform: translate(-50%, -50%);
+  background: rgba(242, 180, 209, 0.626);
   box-sizing: border-box;
-  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 15px 25px rgba(174, 47, 47, 0.672);
   border-radius: 10px;
- 
 }
+
+
 
 .login-box h2 {
   margin: 0 0 30px;
@@ -152,6 +169,7 @@ body {
   display: inline-block;
   padding: 10px 20px;
   color: #03e9f4;
+  background-color: white;
   font-size: 16px;
   text-decoration: none;
   text-transform: uppercase;
@@ -250,6 +268,12 @@ body {
   50%,
   100% {
     bottom: 100%;
+  }
+}
+
+@media screen and (max-width: 567px) {
+  .login-box{
+    width: 370px;
   }
 }
 </style>

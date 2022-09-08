@@ -11,11 +11,19 @@
       <div class="parallax-one">
         <h2>Injured Generation</h2>
       </div>
-      <div class="arrow"></div>
+      <div>
+
+        <svg class="arrows" >
+							<path class="a1" d="M0 0 L30 32 L60 0"></path>
+							<path class="a2" d="M0 20 L30 52 L60 20"></path>
+							<path class="a3" d="M0 40 L30 72 L60 40"></path>
+				</svg>
+
+      </div>
       <div class="content"></div>
     </section>
 
-    <section>
+    <section id="about">
       <div class="block">
         <p>
           <span class="first-character sc">I</span> What is Injured Generation?
@@ -41,7 +49,7 @@
         </p>
         <router-link to="/login"
           ><button type="submit" id="mutton" class="subBtn btn btn-light">
-            Join us
+            Sign In
           </button></router-link
         >
       </div>
@@ -54,15 +62,6 @@ export default {};
 </script>
   
   <style scoped>
-/* .deepshadow {
-  color: #edb200;
-  background-color: rgba(66, 68, 75, 0.622);
-  letter-spacing: 0.1em;
-  font-size: 5rem;
-  text-shadow: 0 -1px 0 #fff, 0 1px 0 #2e2e2e, 0 2px 0 #2c2c2c, 0 3px 0 #2a2a2a,
-    0 4px 0 #282828, 0 7px 0 #262626, 0 6px 0 #242424, 0 7px 0 #222,
-    0 15px 0 #121212, 0 22px 30px rgba(0, 0, 0, 0.9);
-} */
 
 @import url("https://fonts.googleapis.com/css?family=Modak");
 @import url("https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap");
@@ -70,13 +69,12 @@ export default {};
 @import url(https://fonts.googleapis.com/css?family=Oswald:300,400,700);
 @import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900,200italic,300italic,400italic,600italic,700italic,900italic);
 
-/* Override UGG site */
 #mutton {
   display: flex;
   float: right;
   /* padding: 10px 20px; */
   color: #6f03f4;
-  background: #f9a2ddaa;
+  background: #e2b0ffaa;
   font-size: 36px;
   text-decoration: bold;
   text-transform: uppercase;
@@ -121,29 +119,6 @@ export default {};
   }
 }
 
-#main {
-  width: 100%;
-  padding: 0;
-}
-.content-asset p {
-  margin: 0 auto;
-}
-.breadcrumb {
-  display: none;
-}
-
-/* Helpers */
-/**************************/
-.margin-top-10 {
-  padding-top: 10px;
-}
-.margin-bot-10 {
-  padding-bottom: 10px;
-}
-
-#mainframe {
-  padding-top: 18x;
-}
 
 /* Typography */
 /**************************/
@@ -158,11 +133,11 @@ export default {};
 }
 #mainframe h2 {
   font-family: "Modak", cursive;
-  font-size: 70px;
+  font-size: 80px;
   letter-spacing: 10px;
   text-align: center;
   color: rgb(255, 255, 255);
-  text-shadow: -5px 0 black, 0 5px black, 1px 0 black, 0 -1px black;
+  text-shadow: -5px 0 black, 0 8px black, 1px 0 black, 0 -1px black;
   font-weight: 400;
   text-transform: uppercase;
   z-index: 10;
@@ -181,16 +156,6 @@ export default {};
   }
 }
 
-/* @keyframes neon6 {
-  from {
-    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #ff00de,
-      0 0 70px #ff00de, 0 0 80px #ff00de, 0 0 100px #ff00de, 0 0 150px #ff00de;
-  }
-  to {
-    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #ff00de,
-      0 0 35px #ff00de, 0 0 40px #ff00de, 0 0 50px #ff00de, 0 0 75px #ff00de;
-  }
-} */
 
 #mainframe h3 {
   font-family: "Modak", cursive;
@@ -204,40 +169,29 @@ export default {};
 #mainframe p {
   font-family: "Source Sans Pro", sans-serif;
   font-weight: 600;
-  font-size: 19px;
+  font-size: 20px;
   line-height: 24px;
 }
 .first-character {
-  font-weight: 400;
+  font-weight: 500;
   float: left;
-  font-size: 84px;
+  font-size: 94px;
   line-height: 64px;
-  padding-top: 4px;
   padding-right: 8px;
-  padding-left: 3px;
   font-family: "Source Sans Pro", sans-serif;
 }
 
-.sc {
-  color: #3b8595;
-}
-.ny {
-  color: #3d3c3a;
-}
-.atw {
-  color: #c48660;
-}
+
 
 /* Section - Title */
 /**************************/
 #mainframe .title {
   background: white;
-  padding: 60px;
-  margin: 0 auto;
+  padding: 50px;
   text-align: center;
 }
 #mainframe .title h1 {
-  font-size: 35px;
+  font-size: 45px;
   letter-spacing: 8px;
 }
 
@@ -254,21 +208,12 @@ export default {};
   background: #f2f2f2;
   padding: 60px;
 }
-#mainframe .section-overlay-mask {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: black;
-  opacity: 0.7;
-}
+
 
 /* Section - Parallax */
 /**************************/
 #mainframe .parallax-one {
   padding-top: 200px;
-  /* text-shadow: #3b8595; */
   padding-bottom: 200px;
   overflow: hidden;
   position: relative;
@@ -280,23 +225,15 @@ export default {};
   background-position: bottom;
 }
 
-/* Extras */
-/**************************/
-#mainframe .line-break {
-  border-bottom: 1px solid black;
-  width: 150px;
-  margin: 0 auto;
-}
 
 /* Media Queries */
-/**************************/
-@media screen and (max-width: 959px) and (min-width: 768px) {
+@media screen and (max-width: 959px) and (min-width: 468px) {
   #mainframe .block {
     padding: 40px;
     width: 620px;
   }
 }
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 567px) {
   #mainframe .block {
     padding: 30px;
     width: 420px;
@@ -307,12 +244,17 @@ export default {};
   #mainframe .block {
     padding: 30px;
   }
-  #mainframe .parallax-one,
-  #mainframe .parallax-two,
-  #mainframe .parallax-three {
+  #mainframe .parallax-one{
     padding-top: 100px;
     padding-bottom: 100px;
+    width: 400px;
   }
+
+  .arrows{
+	width: 20px;
+	height: 32px;
+  }
+ 
 }
 @media screen and (max-width: 479px) {
   #mainframe .block {
@@ -321,69 +263,53 @@ export default {};
   }
 }
 
-.arrow {
-  width: 150px;
-  height: 50px;
-  position: relative;
-  right: -650px;
-  top: -60px;
-  background-image: url(https://www.youwenliang.com/Codepen/oval.svg);
-  background-size: 76px 66px;
-  background-repeat: no-repeat;
-  background-position: center top;
-  font-size: 13px;
-  font-family: "Fira Sans", sans-serif;
-  color: #fff;
-  text-align: center;
-  line-height: 120px;
+/* Arrow CSS */
+
+.arrows {
+	width: 60px;
+	height: 72px;
+	position: absolute;
+	left: 50%;
+	margin-left: -30px;
+	bottom: 20px;
+}
+.arrows path {
+	stroke: #000000;
+	fill: transparent;
+	stroke-width: 4px;	
+	animation: arrow 2s infinite;
+	-webkit-animation: arrow 2s infinite; 
 }
 
-.arrow:before {
-  content: "";
-  width: 46px;
-  height: 46px;
-  background-image: url(https://www.youwenliang.com/Codepen/arrow.svg);
-  background-position: center 8px;
-  background-repeat: no-repeat;
-  display: block;
-  position: absolute;
-  top: 0px;
-  left: 0px;
-  right: 0px;
-  margin: auto;
-  animation: move 2.5s infinite ease-out;
-  opacity: 0;
+
+@keyframes arrow
+{
+0% {opacity:0}
+40% {opacity:1}
+80% {opacity:0}
+100% {opacity:0}
 }
 
-.arrow:after {
-  content: "";
-  width: 46px;
-  height: 46px;
-  background-image: url(https://www.youwenliang.com/Codepen/arrow.svg);
-  background-position: center 8px;
-  background-repeat: no-repeat;
-  display: block;
-  position: absolute;
-  top: 0px;
-  left: 0px;
-  right: 0px;
-  margin: auto;
-  animation: move 2.5s infinite ease-out 0.75s;
-  opacity: 0;
+@-webkit-keyframes arrow /*Safari and Chrome*/
+{
+0% {opacity:0}
+40% {opacity:1}
+80% {opacity:0}
+100% {opacity:0}
 }
 
-@keyframes move {
-  0% {
-    opacity: 0;
-    background-position: center 8px;
-  }
-  24% {
-    opacity: 1;
-    background-position: center 17px;
-  }
-  48% {
-    opacity: 0;
-    background-position: center 20px;
-  }
+.arrows path.a1 {
+	animation-delay:-1s;
+	-webkit-animation-delay:-1s; 
+}
+
+.arrows path.a2 {
+	animation-delay:-0.5s;
+	-webkit-animation-delay:-0.5s; 
+}
+
+.arrows path.a3 {	
+	animation-delay:0s;
+	-webkit-animation-delay:0s; 
 }
 </style>

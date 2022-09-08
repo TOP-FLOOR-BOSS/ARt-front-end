@@ -2,9 +2,7 @@
   <table class="customTable">
     <thead>
       <tr>
-        <th class="prod">product</th>
-       <router-link to="/Useradmin"><th class="prod">Users</th></router-link> 
-
+        <th class="prod">Product</th>
         <th scoped="col">
           <!-- <a class="btn" data-bs-toggle="modal"  data-bs-target="#addnew">
              </a> -->
@@ -95,7 +93,6 @@
                         v-model="price"
                       />
                     </div>
- 
                   </form>
                 </div>
                 <div class="modal-footer">
@@ -106,9 +103,7 @@
                   >
                     Cancel
                   </button>
-                  <button type="button" 
-                  class="btn btn-primary"
-                  @click="add">
+                  <button type="button" class="btn btn-primary" @click="add">
                     Add Product
                   </button>
                 </div>
@@ -134,18 +129,23 @@
             type="button"
             class="btn btn-primary"
             data-bs-toggle="modal"
-            :data-bs-target="'#update'+product.product_id"
+            :data-bs-target="'#update' + product.product_id"
             data-bs-whatever="@mdo"
           >
             Edit
-          </button>     
+          </button>
 
           <!-- modal -->
-          <EditModal :product="product"/>
-          
-          <button type="btn" class="btn" id="btnSubmit1"
-          @click="this.$store.dispatch('deleteProduct', product.product_id)"
-          >Delete</button>
+          <EditModal :product="product" />
+
+          <button
+            type="btn"
+            class="btn btn-light"
+            id="btnSubmit1"
+            @click="this.$store.dispatch('deleteProduct', product.product_id)"
+          >
+            Delete
+          </button>
         </th>
       </tr>
     </tbody>
@@ -153,51 +153,55 @@
 </template>
 
 <script>
-import EditModal from '@/components/EditModal.vue';
-
+import EditModal from "@/components/EditModal.vue";
 
 export default {
-    props: ["products"],
-    data() {
-        return {
-            title: "",
-            catergory: "",
-            product_description: "",
-            img: "",
-            price: "",
-        };
+  props: ["products"],
+  data() {
+    return {
+      title: "",
+      catergory: "",
+      product_description: "",
+      img: "",
+      price: "",
+    };
+  },
+  mounted() {
+    this.$store.dispatch("getProducts");
+  },
+  computed: {
+    products() {
+      return this.$store.state.products;
     },
-    mounted() {
-        this.$store.dispatch("getProducts");
+  },
+  methods: {
+    add() {
+      return this.$store.dispatch("addProduct", {
+        title: this.title,
+        catergory: this.catergory,
+        product_description: this.product_description,
+        img: this.img,
+        price: this.price,
+      });
     },
-    computed: {
-        products() {
-            return this.$store.state.products;
-        },
-    },
-    methods: {
-        add() {
-            return this.$store.dispatch("addProduct", {
-                title: this.title,
-                catergory: this.catergory,
-                product_description: this.product_description,
-                img: this.img,
-                price: this.price
-            });
-        },
-
-    },
-    components: { EditModal }
+  },
+  components: { EditModal },
 };
 </script>
 
 <style >
+.btn {
+  font-size: 20px;
+}
 .prod {
   font-size: 30px;
   text-decoration: underline;
   padding: 20px 15px;
   text-align: left;
-  
+  text-shadow: -5px 0 rgb(0, 0, 0), 0 8px rgb(0, 0, 0), 1px 0 black,
+    0 -1px black;
+  font-size: 65px;
+  color: rgb(255, 255, 255);
 }
 h1 {
   font-size: 30px;
@@ -208,26 +212,17 @@ h1 {
   margin-bottom: 15px;
 }
 table {
-  width: 100%;
+  width: 80%;
   table-layout: fixed;
 }
-.tbl-header {
-  background-color: rgba(255, 255, 255, 0.3);
-}
+
 .tbl-content {
   height: 300px;
   overflow-x: auto;
   margin-top: 0px;
   border: 1px solid rgba(255, 255, 255, 0.3);
 }
-/* th {
-  padding: 20px 15px;
-  text-align: left;
-  font-weight: 500;
-  font-size: 12px;
-  color: rgb(0, 0, 0);
-  text-transform: uppercase;
-} */
+
 td {
   padding: 15px;
   text-align: left;
@@ -242,37 +237,11 @@ td {
 
 @import url(https://fonts.googleapis.com/css?family=Roboto:400,500,300,700);
 body {
-  background: -webkit-linear-gradient(left, #25c481, #25b7c4);
-  background: linear-gradient(to right, #25c481, #25b7c4);
+  background: -webkit-linear-gradient(left, #0c0d0d, #2c3232);
+  background: linear-gradient(to right, #35403c, #440069);
   font-family: "Roboto", sans-serif;
-  padding-top: 50px;
 }
 section {
   margin: 50px;
-}
-
-/* follow me template */
-.made-with-love {
-  margin-top: 40px;
-  padding: 10px;
-  clear: left;
-  text-align: center;
-  font-size: 10px;
-  font-family: arial;
-  color: #fff;
-}
-.made-with-love i {
-  font-style: normal;
-  color: #f50057;
-  font-size: 14px;
-  position: relative;
-  top: 2px;
-}
-.made-with-love a {
-  color: #fff;
-  text-decoration: none;
-}
-.made-with-love a:hover {
-  text-decoration: underline;
 }
 </style>

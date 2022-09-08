@@ -8,7 +8,7 @@
 <router-link to="/products">
 
   <div id="l-one" class="card">
-    <p >  Gaming  </p>
+    <h1>  Gaming  </h1>
   </div>
 
 </router-link>
@@ -20,7 +20,7 @@
   <router-link to="/products">
 
     <div id="c-one" class="card">
-    <p> Anime </p>
+    <h1> Anime </h1>
   </div>
 
   </router-link>
@@ -31,7 +31,7 @@
 <div class="right-container">
   <router-link to="/products">
     <div id="r-one" class="card">
-    <p> Parallel Art</p>
+    <h1> Parallel Art</h1>
   </div>
   </router-link>
 
@@ -101,23 +101,37 @@ export default {
   background-size: contain;
   font-family: 'Silkscreen', cursive;
   font-size: 39px;
+
   
 }
 
-
-
-#l-two {
-  background-color: #7f7f7f;
+/*effect-underline*/
+#l-one:after {
+	content: '';
+  position: absolute;
+  left: 0;
+  display: inline-block;
+  height: 1em;
+  width: 100%;
+  border-bottom: 4px solid;
+  margin-top: 7px;
+  opacity: 0;
+	-webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+	transition: opacity 0.35s, transform 0.35s;
+	-webkit-transform: scale(0,1);
+	transform: scale(0,1);  
+  color: #7303f4;
 }
 
-#l-three {
-  background-color: #b2b2b2;
+#l-one:hover:after {
+  opacity: 1;
+	-webkit-transform: scale(1);
+	transform: scale(1);
+
 }
 
-#l-four {
-  background-color: #cecece;
-  
-}
+
+
 
 /* individual styles for centered cards */
 #c-one {
@@ -128,18 +142,32 @@ export default {
   font-size: 39px;
 }
 
-#c-two {
-  background-color: #b2b2b2;
-  
+/*effect-underline*/
+#c-one:after {
+	content: '';
+  position: absolute;
+  left: 0;
+  display: inline-block;
+  height: 1em;
+  width: 100%;
+  border-bottom: 4px solid;
+  margin-top: 1px;
+  opacity: 0;
+	-webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+	transition: opacity 0.35s, transform 0.35s;
+	-webkit-transform: scale(0,1);
+	transform: scale(0,1);
+  color: #03ecf4;
 }
 
-#c-three {
-  background-color: #cecece;
+#c-one:hover:after {
+  opacity: 1;
+	-webkit-transform: scale(1);
+	transform: scale(1);
 }
 
-#c-four {
-  background-color: #b2b2b2;
-}
+
+
 
 /* individual styles for right cards */
 #r-one {
@@ -150,16 +178,29 @@ background: url(../assets/bILLIE.jpg);
   font-size: 34px;
 }
 
-#r-two {
-  background-color: #b2b2b2;
+/*effect-underline*/
+#r-one:after {
+	content: '';
+  position: absolute;
+  left: 0;
+  display: inline-block;
+  height: 1em;
+  width: 100%;
+  border-bottom: 4px solid;
+  margin-top: 11px;
+  opacity: 0;
+	-webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+	transition: opacity 0.35s, transform 0.35s;
+	-webkit-transform: scale(0,1);
+	transform: scale(0,1);
+  color: rgb(213, 252, 255);
+
 }
 
-#r-three {
-  background-color: #7f7f7f;
-}
-
-#r-four {
-  background-color: #3a3a3a;
+#r-one:hover:after {
+  opacity: 1;
+	-webkit-transform: scale(1);
+	transform: scale(1);
 }
 
 

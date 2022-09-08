@@ -1,5 +1,5 @@
 <template>
-  <h1>RWD List to Table</h1>
+  <h1 id="User">Users Table</h1>
   <table class="rwd-table">
     <tr>
       <th>User Id</th>
@@ -58,10 +58,20 @@ export default {
 </script>
   
   <style >
-.rwd-table {
-  margin: 1em 0;
-  min-width: 300px;
-}
+    @import url("https://fonts.googleapis.com/css?family=Modak");
+
+    body{
+      background-color: black;
+    }
+
+    #User{
+      font-family: "Modak", cursive;
+      color: #dd5;
+      text-shadow: -5px 0 rgb(255, 255, 255), 0 8px rgb(0, 0, 0), 1px 0 black, 0 -1px black;
+      font-size: 65px;
+    }
+
+    
 .rwd-table tr {
   border-top: 1px solid #ddd;
   border-bottom: 1px solid #ddd;
@@ -107,24 +117,22 @@ export default {
     padding-right: 0;
   }
 }
-body {
-  padding: 0 2em;
-  font-family: Montserrat, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
-  color: #444;
-  background: #eee;
-}
+
 h1 {
   font-weight: normal;
   letter-spacing: -1px;
   color: #34495e;
 }
 .rwd-table {
+  position: absolute;
+  right: 280px;
   background: #34495e;
+  box-shadow: 0 15px 12px #e73c7e, 0 19px 38px #23a6d5, 0 15px 12px #23d5ab;
   color: #fff;
   border-radius: 0.4em;
   overflow: hidden;
+  
+
 }
 .rwd-table tr {
   border-color: #46637f;

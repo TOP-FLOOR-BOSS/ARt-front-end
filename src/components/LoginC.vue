@@ -1,6 +1,6 @@
 <template>
   <div class="login-box">
-    <h2 class="text-light">Login</h2>
+    <h2 class="headings">Login</h2>
     <form @submit.prevent="login" id="login">
       <div class="mb-3 user-box">
         <label class="form-label">Email address</label>
@@ -11,9 +11,6 @@
           id="exampleInputEmail1"
           aria-describedby="emailHelp"
         />
-        <div id="emailHelp" class="form-text">
-          We'll never share your email with anyone else.
-        </div>
       </div>
       <div class="mb-3 user-box">
         <label class="form-label">Password</label>
@@ -29,10 +26,12 @@
         Submit
       </button>
       <p class="form-text font-white fs-5 f-white">
-        DOnt Have an account, <router-link to="/register">Sign up</router-link>
+        Dont Have an account? <router-link to="/register" class="subBtn2">Sign up</router-link>
       </p>
     </form>
   </div>
+
+  
 
 </template>
   
@@ -57,6 +56,19 @@ export default {
 </script>
   
   <style>
+
+
+@import url("https://fonts.googleapis.com/css?family=Modak");
+
+.headings {
+  font-family: "Modak", cursive;
+  font-size: 54px;
+  text-shadow: -5px 0 black, 0 8px black, 1px 0 black, 0 -1px black;
+  color: black;
+  padding: 0;
+  margin: 0;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -69,14 +81,14 @@ body {
 
 .login-box {
   position: absolute;
-  top: 50%;
+  top: 52%;
   left: 50%;
   width: 400px;
   padding: 40px;
   transform: translate(-50%, -50%);
-  background: rgba(218, 201, 201, 0.548);
+  background: rgba(242, 180, 209, 0.626);
   box-sizing: border-box;
-  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 15px 25px rgba(174, 47, 47, 0.672);
   border-radius: 10px;
 }
 
@@ -124,7 +136,7 @@ body {
 .subBtn {
   position: relative;
   display: inline-block;
-  padding: 10px 20px;
+  padding: 10px 30px;
   color: #03e9f4;
   font-size: 16px;
   text-decoration: none;
@@ -143,87 +155,23 @@ body {
     0 0 100px #f4e003;
 }
 
-.subBtn span {
-  position: absolute;
-  display: block;
+
+.subBtn2{
+  color: #000000;
+  font-size:  16px;
+  font-weight: 600;
+  text-decoration: none;
+  overflow: hidden;
+  transition: 0.5s;
+  margin-top: 50px;
+  letter-spacing: 4px;
 }
 
-.subBtn span:nth-child(1) {
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, #03e9f4);
-  animation: btn-anim1 1s linear infinite;
-}
-
-@keyframes btn-anim1 {
-  0% {
-    left: -100%;
-  }
-  50%,
-  100% {
-    left: 100%;
-  }
-}
-
-.subBtn span:nth-child(2) {
-  top: -100%;
-  right: 0;
-  width: 2px;
-  height: 100%;
-  background: linear-gradient(180deg, transparent, #03e9f4);
-  animation: btn-anim2 1s linear infinite;
-  animation-delay: 0.25s;
-}
-
-@keyframes btn-anim2 {
-  0% {
-    top: -100%;
-  }
-  50%,
-  100% {
-    top: 100%;
-  }
-}
-
-.subBtn span:nth-child(3) {
-  bottom: 0;
-  right: -100%;
-  width: 100%;
-  height: 2px;
-  background: linear-gradient(270deg, transparent, #03e9f4);
-  animation: btn-anim3 1s linear infinite;
-  animation-delay: 0.5s;
-}
-
-@keyframes btn-anim3 {
-  0% {
-    right: -100%;
-  }
-  50%,
-  100% {
-    right: 100%;
-  }
-}
-
-.subBtn span:nth-child(4) {
-  bottom: -100%;
-  left: 0;
-  width: 2px;
-  height: 100%;
-  background: linear-gradient(360deg, transparent, #03e9f4);
-  animation: btn-anim4 1s linear infinite;
-  animation-delay: 0.75s;
-}
-
-@keyframes btn-anim4 {
-  0% {
-    bottom: -100%;
-  }
-  50%,
-  100% {
-    bottom: 100%;
-  }
+.subBtn2:hover{
+  background: #7704c9;
+  color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 0 5px #03e9f4, 0 0 25px #f4031b, 0 0 50px #03e9f4,
+    0 0 100px #f4e003;
 }
 </style>

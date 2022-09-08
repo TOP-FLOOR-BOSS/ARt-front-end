@@ -62,6 +62,7 @@ export default createStore({
         })
         
     },
+    
 
     updateUser: async (context, payload) => {
       const { id, user_name, user_lastname, email, user_role,  } = payload;

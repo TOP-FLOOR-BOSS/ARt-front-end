@@ -9,19 +9,18 @@
 
   <nav class="navbar hulu sticky-top">
     <div class="container-fluid">
-      
       <a class="navbar-brand">
-      <i class="fa fa-arrows-alt"></i>
+        <i class="fa fa-arrows-alt"></i>
       </a>
 
-      <span class="UseCart">
+      <span class="UseCart" tooltip="Get Down." flow="down">
         <router-link to="/login">
           <a><i class="fa fa-sign-in"></i> </a>
         </router-link>
 
         |
 
-        <router-link to="/genre">
+        <router-link to="/user">
           <a><i class="fa fa-user"></i></a>
         </router-link>
         |
@@ -47,7 +46,11 @@
         aria-labelledby="offcanvasNavbarLabel"
       >
         <div class="offcanvas-header">
-          <h5 class="offcvas-title" id="offcanvasNavbarLabel">IG</h5>
+          <h5 class="offcvas-title" id="offcanvasNavbarLabel">
+            <a class="navbar-brand">
+              <i class="fa fa-arrows-alt"></i>
+            </a>
+          </h5>
           <button
             type="button"
             class="btn-close"
@@ -66,13 +69,7 @@
                 </a>
               </router-link>
             </li>
-            <li class="nav-item">
-              <a class="nav-link">
-                <i class="fa fa-id-card" aria-hidden="true"></i>
-                <span class="icon"></span>
-                <router-link to="/genre"> About</router-link></a
-              >
-            </li>
+            
             <li class="nav-item">
               <a class="nav-link"
                 ><router-link to="/genre">
@@ -91,28 +88,44 @@
               >
             </li>
 
+            <li class="nav-item">
+              <a class="nav-link">
+                <i class="fa fa-phone" aria-hidden="true"></i>
+                <span class="icon"></span>
+                <router-link to="/contact">Contact</router-link></a
+              >
+            </li>
+
             <div v-if="admin">
               <li class="nav-item">
                 <a class="nav-link">
-                  <i class="fa fa-pencil" aria-hidden="true"></i>
+                  <i class="fa fa-bomb" aria-hidden="true"></i>
                   <span class="icon"></span>
-                  <router-link to="/admin">Admin</router-link></a
+                  <router-link to="/admin">Product Admin</router-link></a
+                >
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link">
+                  <i class="fa fa-user-plus" aria-hidden="true"></i>
+                  <span class="icon"></span>
+                  <router-link to="/admin">User Admin</router-link></a
                 >
               </li>
             </div>
-
-            <!-- <li> -->
-              <button type="button" @click="logout">Logout</button>
-            <!-- </li> -->
           </ul>
         </div>
+
+        <button id="logsOUT" type="button" @click="logout">
+          Log out <i class="fa fa-sign-out" aria-hidden="true"></i>
+        </button>
       </div>
     </div>
   </nav>
 </template>
 
 <script>
-import router from '@/router';
+import router from "@/router";
 export default {
   mounted() {
     this.$store.dispatch("adminGuy");
@@ -147,9 +160,9 @@ export default {
 
 <style scoped>
 .hulu {
-  background: linear-gradient(-45deg, #ffffff, #b7e8ff, #d3c3f5, #f8c1ff);
+  background: linear-gradient(-40deg, #ffffff, #9ca4ff, #d6aaff, #ffffff);
   background-size: 400% 400%;
-  animation: gradient 15s ease infinite;
+  animation: gradient 10s ease infinite;
   /* padding-bottom: 12px; */
   min-height: 10vh;
 }
@@ -187,5 +200,9 @@ export default {
   100% {
     background-position: 0% 50%;
   }
+}
+
+#logsOUT {
+  font-size: 30px;
 }
 </style>
