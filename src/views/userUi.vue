@@ -26,7 +26,14 @@
  </ul>
     </div>
 
-</div>
+
+
+</div>    
+<div v-else>
+      <div class="spinner-border text-light" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+    </div>
   <footer>
   </footer>
 

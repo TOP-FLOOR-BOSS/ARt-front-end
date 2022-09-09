@@ -24,12 +24,15 @@
 
       <button type="submit" class="subBtn btn btn-light" @click="login()">
         Submit
-      </button>
+      </button>  
       <p class="form-text font-white fs-5 f-white">
         Dont Have an account? <router-link to="/register" class="subBtn2">Sign up</router-link>
       </p>
     </form>
-  </div>
+
+  </div>   
+
+
 
   
 

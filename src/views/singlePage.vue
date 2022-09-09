@@ -26,7 +26,6 @@
             </p>
             <div class="priceContainer">
               <div>
-                <p>Users have rated this product:</p>
                 <svg id="ratingsSVG" viewBox="0 0 250 45.59">
                   <polygon
                     class="starFull"

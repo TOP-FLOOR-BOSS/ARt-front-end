@@ -109,7 +109,7 @@
                 <a class="nav-link">
                   <i class="fa fa-user-plus" aria-hidden="true"></i>
                   <span class="icon"></span>
-                  <router-link to="/admin">User Admin</router-link></a
+                  <router-link to="/Useradmin">User Admin</router-link></a
                 >
               </li>
             </div>

@@ -27,14 +27,10 @@
 
         <div>
           <button type="submit" id="mutton" class="subBtn btn btn-light">
-            Sign In
+            Submit
           </button>
         </div>
 
-        <br />
-        <br />
-
-        <p class="header2 fs-4">Follow me</p>
         <br />
         <br />
       </form>

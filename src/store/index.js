@@ -1,6 +1,7 @@
 import { createStore } from "vuex";
 import router from "@/router";
 import axios from "axios";
+import swal from 'sweetalert';
 
 export default createStore({
   state: {
@@ -52,6 +53,9 @@ export default createStore({
       );
       let data = await res.data;
       console.log(data);
+      setTimeout (() => {
+        router.push("/login")
+      },2000)
     },
 
     getUsers: async (context) => {
@@ -188,26 +192,53 @@ export default createStore({
     //=========================== Login ===================================================
 
     // Login
-    login: async (context, payload) =>{
-      // const { email, user_password } = payload;
-      fetch("https://capt.herokuapp.com/login", {
-        method: "PATCH",
-        body: JSON.stringify(payload),
-        headers: {
-          "Content-type": "application/json; charset=UTF-8",
-        },
+
+    login :async(context, payload) => {
+      const { email, user_password } = payload
+      fetch('https://capt.herokuapp.com/login', {
+      method: 'PATCH',
+      body: JSON.stringify({
+          email: email,
+          user_password: user_password,
+      }),
+      headers: {
+        'Content-type': 'application/json; charset=UTF-8',
+      },
       })
-        .then((response) => response.json())
-        .then((data) => {
-          console.log(data);
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        if (data.msg === 'not registered') {
+          swal({
+            icon: "error",
+            title: `Email Not Found. Please register`,
+            text: "Type in the proper email",
+            buttons: "Try Again"
+          })
+        } else {
+          if (data.msg === 'Incorecct Password') {
+            swal({
+              icon: "error",
+              title: "Incorrect Password",
+              buttons: "Try Again"
+            })
+          } else {
+            swal({
+              icon: "success",
+              title: `Welcome `,
+              closeOnClickOutside: false
+            })
           let { msg, token, results } = data;
           context.commit("setuser", data.results);
-          setTimeout (() => {
-            router.push("/genre")
-          },2000)
-
-        });
+            setTimeout(()=>{
+              router.push('/genre'), 3000
+            })
+          }
+        }
+    
+      });
     },
+
 
     logout: (context) => {
       // window.location.reload()
@@ -261,7 +292,12 @@ export default createStore({
           .then((res) => res.json())
           .then((data) => {
             console.log(data);
-            // if (data != null) {
+            if (data.msg === 'Product add to your cart') {
+              swal({
+                icon: "success",
+                title: `Product Added succesfully`,
+              })
+            }
             context.dispatch("getCart", id);
             // }
           });
@@ -282,7 +318,12 @@ export default createStore({
         .then((res) => res.json())
         .then((data) => {
           console.log(data);
-          // if (data != null) {
+          if (data.msg === 'Product Deleted from your cart') {
+            swal({
+              icon: "success",
+              title: `Product succesfully deleted`,
+            })
+          }
           context.dispatch("getCart", id);
           // }
         });

@@ -237,9 +237,22 @@ td {
 
 @import url(https://fonts.googleapis.com/css?family=Roboto:400,500,300,700);
 body {
-  background: -webkit-linear-gradient(left, #0c0d0d, #2c3232);
-  background: linear-gradient(to right, #35403c, #440069);
-  font-family: "Roboto", sans-serif;
+  background: linear-gradient(-45deg, #9652ee, #863ce7, #23a6d5, #23d5ab);
+  background-size: 400% 400%;
+  animation: gradient 12s ease infinite;
+  height: 100%;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 section {
   margin: 50px;

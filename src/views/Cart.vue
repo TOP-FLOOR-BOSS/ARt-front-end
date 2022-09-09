@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <h2 class="display-2">Cart</h2>
+    <h2 class="CardH">Cart</h2>
     <div class="row">
       <div v-if="cart">
         <div class="about">
@@ -11,7 +11,7 @@
             :key="c.product_id"
           >
             <h1 class="title">{{ c.title }}</h1>
-            <img :src="c.img" class="card-img-top" :alt="c.title" />
+            <img :src="c.img" class="card-img-top img-fluid" :alt="c.title" />
             <div class="card-body" id="floaty">
               <p class="card-text">
                 {{ c.product_description }}
@@ -55,7 +55,40 @@ export default {
 </script>
   
   <style scoped>
-#cart {
-  min-height: 100vh;
+        @import url("https://fonts.googleapis.com/css?family=Modak");
+
+
+    .container{
+      background-color: black;
+      width: 100%;
+    }
+
+.card{
+  background: #34495e;
+  box-shadow: 0 12px 22px #e73c7e, 0 19px 38px #23a6d5, 0 15px 12px #23d5ab;
+  margin: 22px;
 }
+
+.card-img-top{
+  height: 370px;
+}
+
+.CardH{
+  font-family: "Modak", cursive;
+      color: #dd5;
+      text-shadow: -5px 0 rgb(255, 255, 255), 0 8px rgb(0, 0, 0), 1px 0 black, 0 -1px black;
+      font-size: 65px;
+}
+
+.title{
+  font-family: "Modak", cursive;
+  color: white;
+
+}
+
+.card-text{
+  color: white;
+  font-size: 19px;
+}
+
 </style>
