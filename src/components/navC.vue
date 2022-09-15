@@ -69,48 +69,56 @@
                 </a>
               </router-link>
             </li>
-            
+
             <li class="nav-item">
-              <a class="nav-link"
-                ><router-link to="/genre">
+              <router-link to="/genre">
+                <a class="nav-link">
                   <i class="fa fa-cubes" aria-hidden="true"></i>
                   <span class="icon"></span>
-                  Products</router-link
-                ></a
-              >
+                  Products
+                </a>
+              </router-link>
             </li>
 
             <li class="nav-item">
-              <a class="nav-link">
-                <i class="fa fa-pencil" aria-hidden="true"></i>
-                <span class="icon"></span>
-                <router-link to="/register">Register</router-link></a
-              >
+              <router-link to="/register">
+                <a class="nav-link">
+                  <i class="fa fa-pencil" aria-hidden="true"></i>
+                  <span class="icon"></span>
+                  Register
+                </a>
+              </router-link>
             </li>
 
             <li class="nav-item">
-              <a class="nav-link">
-                <i class="fa fa-phone" aria-hidden="true"></i>
-                <span class="icon"></span>
-                <router-link to="/contact">Contact</router-link></a
-              >
+              <router-link to="/contact">
+                <a class="nav-link">
+                  <i class="fa fa-phone" aria-hidden="true"></i>
+                  <span class="icon"></span>
+                  Contact
+                </a>
+              </router-link>
             </li>
 
             <div v-if="admin">
               <li class="nav-item">
-                <a class="nav-link">
-                  <i class="fa fa-bomb" aria-hidden="true"></i>
-                  <span class="icon"></span>
-                  <router-link to="/admin">Product Admin</router-link></a
-                >
+                <router-link to="/admin">
+                  <a class="nav-link">
+                    <i class="fa fa-bomb" aria-hidden="true"></i>
+                    <span class="icon"></span>
+                    Product Admin
+                  </a>
+                </router-link>
               </li>
 
               <li class="nav-item">
-                <a class="nav-link">
-                  <i class="fa fa-user-plus" aria-hidden="true"></i>
-                  <span class="icon"></span>
-                  <router-link to="/Useradmin">User Admin</router-link></a
-                >
+                <router-link to="/Useradmin">
+                  <a class="nav-link">
+                    <i class="fa fa-user-plus" aria-hidden="true"></i>
+                    <span class="icon"></span>
+                    User Admin
+                  </a>
+                </router-link>
               </li>
             </div>
           </ul>
@@ -207,10 +215,8 @@ export default {
 }
 
 @media screen and (max-width: 479px) {
-
-  i{
+  i {
     font-size: 22px;
   }
 }
-
 </style>
