@@ -261,6 +261,9 @@ export default {};
     padding: 30px 15px;
     width: 290px;
   }
+  .parallax-one{
+    width: 47px;
+  }
 }
 
 /* Arrow CSS */

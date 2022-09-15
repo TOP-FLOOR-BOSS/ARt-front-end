@@ -132,4 +132,11 @@ export default {};
 ::-webkit-input-placeholder {
   font-family: "roboto";
 }
+
+
+@media screen and (max-width: 400px)  {
+  .header2{
+    font-size: 50px;
+  }
+}
 </style>

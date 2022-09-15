@@ -141,17 +141,10 @@ export default {
   padding-top: 1px;
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
 .container {
   background-color: #efefef;
   width: 1000px;
-  margin: 20vh auto;
-  /* #ee7752, , #23a6d5, #23d5ab */
+  margin: 20px auto;
   box-shadow: 0 15px 12px #e73c7e, 0 19px 38px #23a6d5, 0 15px 12px #23d5ab;
   border-radius: 5px;
   display: flex;
@@ -279,12 +272,7 @@ label {
   margin: 10px 10px 0 0;
   position: relative;
 }
-label {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
+
 div.sizeContainer label {
   background-color: #dbdbdb;
   border: 1px solid #dbdbdb;
@@ -314,25 +302,7 @@ div.colorContainer label::after {
 div.colorContainer label:hover::after {
   opacity: 0.4;
 }
-div.colorContainer input[type="radio"]:checked + label::after {
-  content: "\2714";
-  position: absolute;
-  width: 100%;
-  left: 0;
-  opacity: 1;
-}
-label[for="r6"] {
-  background-color: #d62626;
-}
-label[for="r7"] {
-  background-color: #2980b9;
-}
-label[for="r8"] {
-  background-color: #7f8c8d;
-}
-label[for="r9"] {
-  background-color: #191919;
-}
+
 
 /* Shopping buttons styling */
 div.cart {
@@ -429,26 +399,21 @@ p.price span {
   fill: #95a5a5;
 }
 
-/* .product-price-btn button {
-  display: inline-block;
-  height: 50px;
-  width: 176px;
-  margin: 0 40px 0 16px;
-  box-sizing: border-box;
-  border: transparent;
-  border-radius: 60px;
-  font-family: "Raleway", sans-serif;
-  font-size: 14px;
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 0.2em;
-  color: #ffffff;
-  background-color: #9cebd5;
-  cursor: pointer;
-  outline: none;
-}
+@media screen and (max-width: 400px) {
+  .left {
+    width: 300px;
+    position: relative;
+    display: flex;
+  }
 
-.product-price-btn button:hover {
-  background-color: #79b0a1;
-} */
+  .right {
+    width: 200px;
+    display:none;
+  }
+
+  .cl {
+    display:inline-block;
+  }
+
+}
 </style>

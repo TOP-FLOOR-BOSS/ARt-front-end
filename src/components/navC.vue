@@ -205,4 +205,12 @@ export default {
 #logsOUT {
   font-size: 30px;
 }
+
+@media screen and (max-width: 479px) {
+
+  i{
+    font-size: 22px;
+  }
+}
+
 </style>

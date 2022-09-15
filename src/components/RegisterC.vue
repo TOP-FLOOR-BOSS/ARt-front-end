@@ -271,9 +271,13 @@ body {
   }
 }
 
-@media screen and (max-width: 567px) {
+@media screen and (max-width: 467px) {
   .login-box{
     width: 370px;
+  }
+
+  .form-label{
+    width: 30px;
   }
 }
 </style>
